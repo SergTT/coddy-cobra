@@ -45,3 +45,39 @@ body{
     /* Полоса прокрутки: Скрыта */
     overflow: hidden;
 }
+
+.environment{
+    /* Отображение элемента: Блок */
+    display: block;
+    /* Позиционирование элемента: Относительное */
+    position: relative;
+    /* Просчет размеров элемента: Игнорировать внутренние отступы */
+    box-sizing: border-box;
+    /* Обтекание элемента: По левому краю */
+    float: left;
+    
+     /* Внешний отступ элемента */
+    margin: 0px;
+    /* Внутренний отступ элемента */
+    padding: 0px;
+    
+     /* Ширина элемента */
+    width: 100%;
+    /* Высота элемента */
+    height: 100%;
+    
+     /* Полоса прокрутки: Скрыта */
+    overflow: hidden;
+    
+}
+
+.environment.default{
+    /* Отображение элемента: Блок */
+    /* !important важное свойство */
+    display: block !important;
+}
+.environment.sources{
+    /* Отображение элемента: Не отображать */
+    /* !important важное свойство */
+     display: none !important;
+}
