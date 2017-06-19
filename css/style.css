@@ -191,9 +191,8 @@ body{
     /* Высота элемента */
     height: auto;
 }
-.section.map > inner{
+.section.map > .inner{
       /* Высота элемента */
     height: 100%;
     
-}
 }
