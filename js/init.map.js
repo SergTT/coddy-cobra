@@ -20,9 +20,9 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
     'Фрагменты @ <a href="http://kosmosnimki.ru">Kosmosnimki</a>',
     
     // параметры метода minZoom устанавливает минимальное приближение маштаба
-    minZoom 4,
+    minZoom: 4,
     
     // параметры метода maxZoom устанавливает максимальное приближение маштаба
+    maxZoom: 18,
     
-    
-}).add(map);
+}).addTo(map);
