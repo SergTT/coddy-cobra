@@ -23,6 +23,6 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
     minZoom: 4,
     
     // параметры метода maxZoom устанавливает максимальное приближение маштаба
-    maxZoom: 18,
+    maxZoom: 18
     
 }).addTo(map);
