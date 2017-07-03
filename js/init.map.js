@@ -37,3 +37,5 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
     maxZoom: 18
     
 }).addTo(map);
+
+var loaded_points = load_points();

@@ -97,7 +97,7 @@ function load_points(){
         
         // data вложенный параметр массива, объекта, или вложенная переменная
         // null нулевое (пустое значение)
-        data: null;
+        data: null
     };
     
     // jQuery вызов библеотеки jQuery
@@ -118,7 +118,7 @@ function load_points(){
         
         // url параметр метода ajax
         // адрес, на который отправляется запрос
-        url: 'js/json/map.tracks.json',
+        url: 'js/json/map.points.json',
         
         // success параметр метода ajax
         // выполняет действие в случае успешного запроса
@@ -163,5 +163,17 @@ function load_points(){
     // return возвращяет результат функции
     // function_return подставляет значение переменной (ранее была объявлена, является массивом)
     return function_result;
+    
+}
+
+
+// function объявляет функцию
+// load_points название функции
+function create_marker(map,lat,lng){
+    
+    // L вызывает библеотеку Leaflet
+    // marker метод, который создает объкт маркера карты
+    // addTo метод, который добавляет объект маркера на карту
+    L.marker([lat, lng]).addTo(map);
     
 }
