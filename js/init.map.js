@@ -38,4 +38,29 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
     
 }).addTo(map);
 
+
 var loaded_points = load_points();
+
+// if условный оператор "если"
+// load_points переменная
+// == оператор сравние на точное совпадение или равенства
+if(load_points.status == true ){
+    
+    // load_points.data.points
+    // forEach метод работы с массивами, пробежка по каждому элементу
+    // function(point) выполняет действие с передачей load_points.data.points в переменную point
+    load_points.data.point.forEach(function(point){
+        
+        // create_marker вызов ранее объявленой функции
+        // map первый аргумент функции, подставляем значение переменной map
+        // location.geo.latitude подставка значение переменной point > location> geo > latitude
+        // location.geo.longitude подставка значение переменной point > location> geo > longitude
+        create_marker(map, point.location.geo.latitude, point.location.geo.longitude);
+        
+    });
+    
+}else{
+    
+    // вывод в консоль
+    console.log('не удалось загрузить метки');
+}
