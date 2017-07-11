@@ -7,8 +7,8 @@
             "description": "Описание точки гео-трека",
             "location": {
                 "geo": {
-                    "latitude": "12.34",
-                    "longitude": "12.34"
+                    "latitude": "55.759258",
+                    "longitude": "37.665283"
                 }
             }
         },
@@ -19,8 +19,8 @@
             "description": "Описание точки гео-трека",
             "location": {
                 "geo": {
-                    "latitude": "12.34",
-                    "longitude": "12.34"
+                    "latitude": "55.8063702",
+                    "longitude": "37.5918889"
                 }
             }
         },
@@ -31,8 +31,8 @@
             "description": "Описание гео-трека",
             "location": {
                 "geo": {
-                    "latitude": "12.34",
-                    "longitude": "12.34"
+                    "latitude": "55.778299",
+                    "longitude": "37.5841413"
                 }
             }
         },
@@ -43,8 +43,8 @@
             "description": "Описание гео-трека",
             "location": {
                 "geo": {
-                    "latitude": "12.34",
-                    "longitude": "12.34"
+                    "latitude": "55.753781",
+                    "longitude": "37.6790732"
                 }
             }
         },
@@ -55,8 +55,8 @@
             "description": "описание гео-трека",
             "location": {
                 "geo": {
-                    "latitude": "12.34",
-                    "longitude": "12.34"
+                    "latitude": "55.767828",
+                    "longitude": "37.6019213"
                 }
             }
         }
