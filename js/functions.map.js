@@ -177,3 +177,15 @@ function create_marker(map,lat,lng){
     L.marker([lat, lng]).addTo(map);
     
 }
+
+// function объявляет функцию
+// load_points название функции
+// map (в скобках) параметр функции
+// latlngs (в скобках) параметр функции
+function create_track(map,latlngs){
+    
+    // L вызывает библеотеку Leaflet
+    // polyline метод, который создает обект линии на карте
+    // addTo метод, который добавляет обект линии на карте
+    L.polyline(latlngs, {color: 'red'}).addTo(map);
+}
