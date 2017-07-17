@@ -189,3 +189,42 @@ function create_track(map,latlngs){
     // addTo метод, который добавляет обект линии на карте
     L.polyline(latlngs, {color: 'red'}).addTo(map);
 }
+
+
+// function объявляет функцию
+// points_array название функции
+// object (в скобках) параметр функции
+function points_array(object){
+    
+    // var объявляет переменную
+    // [] скобки обозначение индексированного массива
+    var result = [];
+    
+    // for цикл (повтор действия)
+    // i переменная, основной аргумент цикла, начинается с еденицы
+    // object.lenght, object параметр массива, lenght метод получения кол-ва элементов массива
+    // i++ запускает цикл
+    for(i = 1; i <= object.length; i++){
+        
+        // var объявляет переменную
+        // latitude название переменной
+        var latitude = object.point[i].location.geo.latitude;
+        
+        // var объявляет переменную
+        // longitude название переменной
+        var longitude = object.point[i].location.geo.longitude;
+        
+        // result ранее объявленная переменная
+        // push метод, помещяющий новый элемент в массив
+        result.push({ latitude, longitude });
+        
+    }
+    
+    // console.log (выводит значение в консоль)
+    // result ранее объявленная переменная
+    console.log(result);
+    
+    // result возврощяет результат функции
+    return result;
+    
+}
