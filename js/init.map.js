@@ -59,6 +59,17 @@ if(loaded_points.status == true ){
         
     });
     
+    // var объявляет переменную
+    // track название переменной
+    // points_array вызов ранее объявленной функции
+    // loaded_points подставка раннее объявленной переменной
+    var track = points_array(load_points);
+    
+    // create_track вызов ранее объявленной функции
+    // map параметр функции, подставляется ранее объявленная переменная map
+    // track ранее обявленная переменная, подставляется в параметр latlngs
+    create_track(map, track);
+    
 }else{
     
     // вывод в консоль
