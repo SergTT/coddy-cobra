@@ -63,7 +63,7 @@ if(loaded_points.status == true ){
     // track название переменной
     // points_array вызов ранее объявленной функции
     // loaded_points подставка раннее объявленной переменной
-    var track = points_array(load_points);
+    var track = points_array(loaded_points);
     
     // create_track вызов ранее объявленной функции
     // map параметр функции, подставляется ранее объявленная переменная map
