@@ -49,7 +49,7 @@ if(loaded_points.status == true ){
     // load_points.data.points
     // forEach метод работы с массивами, пробежка по каждому элементу
     // function(point) выполняет действие с передачей load_points.data.points в переменную point
-    load_points.data.point.forEach(function(point){
+    loaded_points.data.point.forEach(function(point){
         
         // create_marker вызов ранее объявленой функции
         // map первый аргумент функции, подставляем значение переменной map
