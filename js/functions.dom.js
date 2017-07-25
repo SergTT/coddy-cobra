@@ -1,3 +1,57 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function объявляет функцию
+// dom_window_show название функции
+function dom_window_show(name){
+    
+    // jQuery вызывает библеотеку jQuery
+    // .window селектор html-элемент класса window
+    // name подставляет значения параметра функции
+    jQuery('.window.' + name)
+        // addClass метод библеотеки jQuery, добавляющий класс выбранному элементу
+        .addClass('active')
+        // siblings метод библеотеки jQuery, который переключаются от выбранного элемента на соседние
+        .sibling()
+        // removeClass метод библеотеки jQuery, удаляющий класс выбранному элементу
+        .removeClass('active');
+}
+
+// function объявляет функций
+// dom_window_hide название функции
+function dom_window_hide(name){
+    
+    // jQuery вызывает библеотеку jQuery
+    // .window селектор html-элемент класса window
+    // name подставляет значения параметра функции
+    jQuery('.window.' + name)
+        // addClass метод библеотеки jQuery, добавляющий класс выбранному элементуss('active')
+        .removeCla
+        // siblings метод библеотеки jQuery, который переключаются от выбранного элемента на соседние
+        .sibling()
+        // removeClass метод библеотеки jQuery, удаляющий класс выбранному элементу
+        .removeClass('active');
+}
+
+
+
+
+
+
+
+
+
 // function объявляет функцию
 // developer_map_show_latlng название функции 
 function developer_map_show_latlng(
