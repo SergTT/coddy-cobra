@@ -18,6 +18,9 @@ html{
     /* Высота элемента */
     height: 100%;
     
+    /* Используемый шрифт текста внутри текста */
+    font-family: sans-serif;
+    
     /* Полоса прокрутки: Скрыта */
     overflow: hidden;
 }
@@ -117,7 +120,7 @@ body{
 .view.windows{
     /* Отображение элемента: Не отображать */
     /* !important важное свойство */
-    display: block !important;
+    display: none !important;
     
     /* Уровень слоя */
     z-index: 3;
@@ -187,6 +190,9 @@ body{
     width: auto;
     /* Высота элемента */
     height: 100%;
+    
+    /* Размер шрифта внутри элемента */
+    font-size: 14px;
 }
 .view.windows .window.active{
     /* Отображения элемента: Блок */
