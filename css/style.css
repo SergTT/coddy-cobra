@@ -117,10 +117,17 @@ body{
 .view.windows{
     /* Отображение элемента: Не отображать */
     /* !important важное свойство */
-    display: none !important;
+    display: block !important;
     
     /* Уровень слоя */
     z-index: 3;
+    
+    background-color: rgba(0,0,0,0.8);
+}
+.view.windows.active{
+    /* Отображения элемента: Не отображать */
+    /* !important важное свойство */
+    display: block !important;
 }
 .view.welcome{
     /* Отображение элемента: Не отображать */
@@ -161,8 +168,8 @@ body{
 
 .view.windows .window{
     
-    /* Отображение элемента: Блок */
-    display: block;
+    /* Отображение элемента: не отображать */
+    display: none;
     /* Позиционирование элемента: Абсолютное */
     position: absolute;
     /* Просчет размеров элемента: Игнорировать внутрение отступы */
@@ -181,19 +188,23 @@ body{
     /* Высота элемента */
     height: 100%;
 }
+.view.windows .window.active{
+    /* Отображения элемента: Блок */
+    /* !important важное свойство */
+    display: block !important;
+}
 
-
-.window.city{
+.view.windows .window.city{
     /* Позиционирование элемента: Абсолютное */
     position: absolute;
     
     /* Позиция элемента от верхнего края */
     top: 0px;
-    /* Позиция элемента от левого края */
-    left: 0px;
+    /* Позиция элемента от правого края */
+    right: 0px;
     
     /* Ширина элемента */
-    width: 300%;
+    width: 300px;
     /* Высота элемента */
     height: 100%;
     
@@ -202,7 +213,7 @@ body{
     /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
 }
-.window.school{
+.view.windows .window.school{
     /* Позиционирование элемента: абсолютное */
     position: absolute;
     
@@ -221,7 +232,7 @@ body{
     /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
 }
-.window.point{
+.view.windows .window.point{
     /* Позиционирование элемента: абсолютное */
     position: absolute;
     
@@ -239,4 +250,16 @@ body{
     background-color: rgb(255,255,255);
     /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+}
+.actis{
+    margin: 30px;
+}
+.actis2{
+    margin: 30px;
+}
+.ibs{
+    margin: 30px;
+}
+.ibs2{
+    margin: 30px;
 }
