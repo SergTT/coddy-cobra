@@ -121,6 +121,13 @@ body{
     
     /* Уровень слоя */
     z-index: 3;
+    
+    background-color: rgba(0,0,0,0.8);
+}
+.view.windows.active{
+    /* Отображения элемента: Не отображать */
+    /* !important важное свойство */
+    display: block !important;
 }
 .view.welcome{
     /* Отображение элемента: Не отображать */
@@ -161,8 +168,8 @@ body{
 
 .view.windows .window{
     
-    /* Отображение элемента: Блок */
-    display: block;
+    /* Отображение элемента: не отображать */
+    display: none;
     /* Позиционирование элемента: Абсолютное */
     position: absolute;
     /* Просчет размеров элемента: Игнорировать внутрение отступы */
@@ -181,33 +188,18 @@ body{
     /* Высота элемента */
     height: 100%;
 }
+.view.windows .window.active{
+    /* Отображения элемента: Блок */
+    /* !important важное свойство */
+    display: block !important;
+}
 
-
-.window.city{
+.view.windows .window.city{
     /* Позиционирование элемента: Абсолютное */
     position: absolute;
     
     /* Позиция элемента от верхнего края */
     top: 0px;
-    /* Позиция элемента от левого края */
-    left: 0px;
-    
-    /* Ширина элемента */
-    width: 300%;
-    /* Высота элемента */
-    height: 100%;
-    
-    /* Цвет фона элемента */
-    background-color: rgb(255,255,255);
-    /* Тень элемента */
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
-}
-.window.school{
-    /* Позиционирование элемента: абсолютное */
-    position: absolute;
-    
-    /* Позиция элемента от верхнего края */
-    top: 0px;
     /* Позиция элемента от правого края */
     right: 0px;
     
@@ -221,14 +213,14 @@ body{
     /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
 }
-.window.point{
+.view.windows .window.school{
     /* Позиционирование элемента: абсолютное */
     position: absolute;
     
     /* Позиция элемента от верхнего края */
     top: 0px;
     /* Позиция элемента от правого края */
-    right: 0px;
+    right: -300px;
     
     /* Ширина элемента */
     width: 300px;
@@ -239,4 +231,62 @@ body{
     background-color: rgb(255,255,255);
     /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+    
+    /* Анимация изменения */
+    transition: all 0.5s ease;
+    /* Анимация изменения для Webkit-браузеров: Chrome, Safari, Opera */
+    -webkit-transition: all 0.5s ease;
+    /* Анимация изменения для Gecko-браузеров: Firefor и Edge */
+    -moz-transition: all 0.5s ease;
+    /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
+    -ms-transition: all 0.5s ease;
+    
+}
+.view.windows .window.school.active{
+    right: 0px;
+}
+
+.view.windows .window.point{
+    /* Позиционирование элемента: абсолютное */
+    position: absolute;
+    
+    /* Позиция элемента от верхнего края */
+    top: 0px;
+    /* Позиция элемента от правого края */
+    right: -300px;
+    
+    /* Ширина элемента */
+    width: 300px;
+    /* Высота элемента */
+    height: 100%;
+    
+    /* Цвет фона элемента */
+    background-color: rgb(255,255,255);
+    /* Тень элемента */
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
+    
+    /* Анимация изменения */
+    transition: all 0.5s ease;
+    /* Анимация изменения для Webkit-браузеров: Chrome, Safari, Opera */
+    -webkit-transition: all 0.5s ease;
+    /* Анимация изменения для Gecko-браузеров: firefox и подобных */
+    -moz-transition: all 0.5s ease;
+    /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
+    -ms-transition: all 0.5s ease;
+}
+.view.windows .window.point.active{
+    right: 0px;
+}
+
+.actis{
+    margin: 30px;
+}
+.actis2{
+    margin: 30px;
+}
+.ibs{
+    margin: 30px;
+}
+.ibs2{
+    margin: 30px;
 }
