@@ -21,6 +21,36 @@ var map = L.map('map',{
 // 13 второй аргумент функции, масштаб карты
 map.setView([55.7540, 37.6203],13);
 
+L.marker([55.759258, 37.665283]).addTo(map)
+    .bindPopup('Здание Coddy: ' +
+                        ' тут проходят курсы:' +
+                        ' Графический дизайн Photoshop,' +
+                        ' Этичный хакер,' +
+                        ' Игровое 3D-моделирование,' +
+                        ' Игровое программирование на C#,' +
+                        ' Программирование игр на JavaScript,' +
+                        ' Игровое 3D моделирование с Blender,' +
+                        ' Web приложения,' +
+                        ' Гарвардский курс.' +
+              '<br>Адрес: Actis Wunderman, Курская (Нижний сусальный пер., 5с19)')
+    .openPopup();
+
+L.marker([55.8063702, 37.5918889]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+
+L.marker([55.778299, 37.5841413]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+
+L.marker([55.753781, 37.6790732]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+
+L.marker([55.767828, 37.6019213]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
 L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
