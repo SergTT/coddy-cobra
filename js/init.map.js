@@ -21,34 +21,75 @@ var map = L.map('map',{
 // 13 второй аргумент функции, масштаб карты
 map.setView([55.7540, 37.6203],13);
 
-L.marker([55.759258, 37.665283]).addTo(map)
-    .bindPopup('Здание Coddy: ' +
-                        ' тут проходят курсы:' +
-                        ' Графический дизайн Photoshop,' +
-                        ' Этичный хакер,' +
-                        ' Игровое 3D-моделирование,' +
-                        ' Игровое программирование на C#,' +
-                        ' Программирование игр на JavaScript,' +
-                        ' Игровое 3D моделирование с Blender,' +
-                        ' Web приложения,' +
-                        ' Гарвардский курс.' +
-              '<br>Адрес: Actis Wunderman, Курская (Нижний сусальный пер., 5с19)')
-    .openPopup();
+var marker = L.icon({
+    iconUrl: 'img/marker.png',
+    shadowUrl: 'img/marker-shadow.png',
+    iconSize: [33, 40],
+    shadowSize: [42, 36],
+    shadowAnchor: [12, 16]
+});
+
+// L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
+//     .bindPopup('Здание Coddy: ' +
+//                         ' тут проходят курсы:' +
+//                         ' Графический дизайн Photoshop,' +
+//                         ' Этичный хакер,' +
+//                         ' Игровое 3D-моделирование,' +
+//                         ' Игровое программирование на C#,' +
+//                         ' Программирование игр на JavaScript,' +
+//                         ' Игровое 3D моделирование с Blender,' +
+//                         ' Web приложения,' +
+//                         ' Гарвардский курс.' +
+//               '<br>Адрес: Actis Wunderman, Курская (Нижний сусальный пер., 5с19)')
+//     .openPopup();
+
+L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
+    .on("click", function(){
+        document.querySelector("#actis").classList.toggle("hidden");;
+    });   
 
 L.marker([55.8063702, 37.5918889]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .bindPopup('Здание Coddy '+
+                        'тут проходят курсы: '+
+                        'Программирование игр на Python,'+
+                        'Создание игр (Scratch)'+
+                        '<br>адрес: IBS (м. Дмитровская, Складочная ул., д.3)')
     .openPopup();
 
 L.marker([55.778299, 37.5841413]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .bindPopup('Здание Coddy '+
+                        'тут проходят курсы: '+
+                        'Стартапы, '+
+                        'Startup English, '+
+                        'Ораторское мастерство, '+
+                        'Объемно-пространственное мышление '+
+                        'Дизайн-мышление, '+
+                        'Фузионизм в дизайне, '+
+                        'Основы программмирования для самых маленьких, '+
+                        'Интернет-предпринимательство.'+
+                        '<br>адрес: Deloitte, Белорусская (ул. Лесная, 5Б)')
     .openPopup();
 
 L.marker([55.753781, 37.6790732]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .bindPopup('Здание Coddy '+
+                        'тут проходят курсы: '+
+                        'Создание сайтов (HTML,CSS), '+
+                        'Основы компьютерной грамотности '+
+                        '<br>адрес: Крок, Площадь Ильича (Волочаевская, 5к1)')
     .openPopup();
 
 L.marker([55.767828, 37.6019213]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .bindPopup('Здание Coddy '+
+                        'тут проходят курсы: '+
+                        'Программирование игр на Python'+
+                        'Создание игр (Scratch)'+
+                        'Веб-приложения (html->)'+
+                        'Дизайн сайтов'+
+                        'Создание игр (Snap!)'+
+                        'Програмирование для самых маленьких в Tynker'+
+                        'Minecraft в Scratch'+
+                        'Стратегия Го'+
+                        'адрес: ФИНАМ (м. Пушкинская, Настасьинский пер., д.7, стр.2)')
     .openPopup();
 
 // L вызывает библеотеку Leaflet
