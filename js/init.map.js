@@ -28,7 +28,6 @@ var marker = L.icon({
     shadowSize: [42, 36],
     shadowAnchor: [12, 16]
 });
-
 // L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
 //     .bindPopup('Здание Coddy: ' +
 //                         ' тут проходят курсы:' +
@@ -48,13 +47,12 @@ L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
         document.querySelector("#actis").classList.toggle("hidden");;
     });   
 
-L.marker([55.8063702, 37.5918889]).addTo(map)
-    .bindPopup('Здание Coddy '+
-                        'тут проходят курсы: '+
-                        'Программирование игр на Python,'+
-                        'Создание игр (Scratch)'+
-                        '<br>адрес: IBS (м. Дмитровская, Складочная ул., д.3)')
-    .openPopup();
+
+
+L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
+    .on("click", function(){
+        document.querySelector("#IBS").classList.toggle("hidden");;
+    }); 
 
 L.marker([55.778299, 37.5841413]).addTo(map)
     .bindPopup('Здание Coddy '+

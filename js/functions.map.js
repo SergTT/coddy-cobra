@@ -175,7 +175,6 @@ function create_marker(map,lat,lng){
     // marker метод, который создает объкт маркера карты
     // addTo метод, который добавляет объект маркера на карту
     L.marker([lat, lng]).addTo(map);
-    
 }
 
 // function объявляет функцию

@@ -193,6 +193,7 @@ body{
     cursor: pointer;
 }
 
+
 .view.windows .window{
     
     /* Отображение элемента: не отображать */
@@ -303,17 +304,3 @@ body{
 }
 .view.windows .window.point.active{
     right: 0px;
-}
-
-.actis{
-    margin: 30px;
-}
-.actis2{
-    margin: 30px;
-}
-.ibs{
-    margin: 30px;
-}
-.ibs2{
-    margin: 30px;
-}
