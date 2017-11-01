@@ -128,3 +128,11 @@ closeButton[i].addEventListener("click", function(){
     console.log('okey');
 });
 }
+
+var leftButton = document.getElementsByClassName("left");
+for(var i = 0; i < leftButton.length; i++){
+leftButton[i].addEventListener("click", function(){
+    // this.parentElement.classList.toggle("hidden");
+    console.log('okey');
+});
+}
