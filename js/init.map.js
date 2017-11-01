@@ -51,45 +51,22 @@ L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#IBS").classList.toggle("hidden");;
+        document.querySelector("#ibs").classList.toggle("hidden");;
     }); 
 
-L.marker([55.778299, 37.5841413]).addTo(map)
-    .bindPopup('Здание Coddy '+
-                        'тут проходят курсы: '+
-                        'Стартапы, '+
-                        'Startup English, '+
-                        'Ораторское мастерство, '+
-                        'Объемно-пространственное мышление '+
-                        'Дизайн-мышление, '+
-                        'Фузионизм в дизайне, '+
-                        'Основы программмирования для самых маленьких, '+
-                        'Интернет-предпринимательство.'+
-                        '<br>адрес: Deloitte, Белорусская (ул. Лесная, 5Б)')
-    .openPopup();
+L.marker([55.778399, 37.5841413], {icon: marker}).addTo(map)
+    .on("click", function(){
+        document.querySelector("#deloitte").classList.toggle("hidden");;
+    }); 
 
-L.marker([55.753781, 37.6790732]).addTo(map)
-    .bindPopup('Здание Coddy '+
-                        'тут проходят курсы: '+
-                        'Создание сайтов (HTML,CSS), '+
-                        'Основы компьютерной грамотности '+
-                        '<br>адрес: Крок, Площадь Ильича (Волочаевская, 5к1)')
-    .openPopup();
-
-L.marker([55.767828, 37.6019213]).addTo(map)
-    .bindPopup('Здание Coddy '+
-                        'тут проходят курсы: '+
-                        'Программирование игр на Python'+
-                        'Создание игр (Scratch)'+
-                        'Веб-приложения (html->)'+
-                        'Дизайн сайтов'+
-                        'Создание игр (Snap!)'+
-                        'Програмирование для самых маленьких в Tynker'+
-                        'Minecraft в Scratch'+
-                        'Стратегия Го'+
-                        'адрес: ФИНАМ (м. Пушкинская, Настасьинский пер., д.7, стр.2)')
-    .openPopup();
-
+L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
+    .on("click", function(){
+        document.querySelector("#krock").classList.toggle("hidden");;
+    }); 
+L.marker([55.767828, 37.6019213], {icon: marker}).addTo(map)
+    .on("click", function(){
+        document.querySelector("#finam").classList.toggle("hidden");;
+    }); 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
 L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
@@ -143,4 +120,11 @@ if(loaded_points.status == true ){
     
     // вывод в консоль
     console.log('не удалось загрузить метки');
+}
+var closeButton = document.getElementsByClassName("exitImg");
+for(var i = 0; i < closeButton.length; i++){
+closeButton[i].addEventListener("click", function(){
+    this.parentElement.classList.toggle("hidden");
+    console.log('okey');
+});
 }

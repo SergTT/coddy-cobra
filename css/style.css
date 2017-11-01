@@ -302,5 +302,3 @@ body{
     /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
     -ms-transition: all 0.5s ease;
 }
-.view.windows .window.point.active{
-    right: 0px;
