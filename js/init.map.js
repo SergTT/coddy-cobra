@@ -44,26 +44,27 @@ var marker = L.icon({
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#actis").classList.toggle("hidden");;
+        document.querySelector("#actis").classList.toggle("hidden");
+        document.querySelector("#actis").classList.toggle("card-active");
     });   
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#ibs").classList.toggle("hidden");;
+        document.querySelector("#ibs").classList.toggle("hidden");
     }); 
 
 L.marker([55.778399, 37.5841413], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#deloitte").classList.toggle("hidden");;
-    }); 
+        document.querySelector("#deloitte").classList.toggle("hidden");
+    });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#krock").classList.toggle("hidden");;
+        document.querySelector("#krock").classList.toggle("hidden");
     }); 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#finam").classList.toggle("hidden");;
+        document.querySelector("#finam").classList.toggle("hidden");
     }); 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
@@ -123,6 +124,7 @@ var closeButton = document.getElementsByClassName("exitImg");
 for(var i = 0; i < closeButton.length; i++){
 closeButton[i].addEventListener("click", function(){
     this.parentElement.classList.toggle("hidden");
+    this.parentElement.classList.toggle("card-active")
 });
 }
 
@@ -141,3 +143,6 @@ for(var i = 0; i < rightButton.length; i++){
         console.log('Нажата правая кнопка');
     });
 }
+
+var sliderImages = document.querySelector(".card-active");
+console.log(sliderImages);
