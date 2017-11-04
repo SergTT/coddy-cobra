@@ -47,8 +47,6 @@ L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
         document.querySelector("#actis").classList.toggle("hidden");;
     });   
 
-
-
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#ibs").classList.toggle("hidden");;
@@ -119,20 +117,27 @@ if(loaded_points.status == true ){
 }else{
     
     // вывод в консоль
-    console.log('не удалось загрузить метки');
+    //console.log('не удалось загрузить метки');
 }
 var closeButton = document.getElementsByClassName("exitImg");
 for(var i = 0; i < closeButton.length; i++){
 closeButton[i].addEventListener("click", function(){
     this.parentElement.classList.toggle("hidden");
-    console.log('okey');
 });
 }
 
-var leftButton = document.getElementsByClassName("left");
+var leftButton = document.getElementsByClassName("left-button");
 for(var i = 0; i < leftButton.length; i++){
-leftButton[i].addEventListener("click", function(){
-    // this.parentElement.classList.toggle("hidden");
-    console.log('okey');
-});
+    leftButton[i].addEventListener("click", function(){
+        // this.parentElement.classList.toggle("hidden");
+        console.log('Нажата левая кнопка');
+    });
+}
+
+var rightButton = document.getElementsByClassName("right-button");
+for(var i = 0; i < rightButton.length; i++){
+    rightButton[i].addEventListener("click", function(){
+        // this.parentElement.classList.toggle("hidden");
+        console.log('Нажата правая кнопка');
+    });
 }

@@ -302,3 +302,37 @@ body{
     /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
     -ms-transition: all 0.5s ease;
 }
+
+/* Слайдер */
+.slider {
+    position: relative;
+}
+
+.slider-images img {
+    width: 90%;
+    margin: 0 auto;
+    display: none;
+}
+
+.slider-images img.show-img {
+    display: block;
+}
+
+.left-button, .right-button {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.75);
+    top: 80px;
+    cursor: pointer;
+}
+
+.left-button {
+    left: 15px;
+}
+
+.right-button {
+    right: 15px;
+}
+
+.left-button:hover, .right-button:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+}
