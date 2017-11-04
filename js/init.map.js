@@ -63,7 +63,7 @@ L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#krock").classList.toggle("hidden");;
     }); 
-L.marker([55.767828, 37.6019213], {icon: marker}).addTo(map)
+L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#finam").classList.toggle("hidden");;
     }); 
