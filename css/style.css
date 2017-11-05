@@ -336,3 +336,7 @@ body{
 .left-button:hover, .right-button:hover {
     background-color: rgba(200, 200, 200, 0.8);
 }
+.show-img{
+    height: 180px;
+
+}

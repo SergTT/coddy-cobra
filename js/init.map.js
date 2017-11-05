@@ -51,20 +51,24 @@ L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#ibs").classList.toggle("hidden");
+        document.querySelector("#ibs").classList.toggle("card-active");
     }); 
 
-L.marker([55.778399, 37.5841413], {icon: marker}).addTo(map)
+L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#deloitte").classList.toggle("hidden");
+        document.querySelector("#deloittes").classList.toggle("card-active");
     });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#krock").classList.toggle("hidden");
+        document.querySelector("#krock").classList.toggle("card-active");
     }); 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#finam").classList.toggle("hidden");
+        document.querySelector("#finam").classList.toggle("card-active");
     }); 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
