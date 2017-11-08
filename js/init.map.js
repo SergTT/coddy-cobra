@@ -28,47 +28,98 @@ var marker = L.icon({
     shadowSize: [42, 36],
     shadowAnchor: [12, 16]
 });
-// L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
-//     .bindPopup('Здание Coddy: ' +
-//                         ' тут проходят курсы:' +
-//                         ' Графический дизайн Photoshop,' +
-//                         ' Этичный хакер,' +
-//                         ' Игровое 3D-моделирование,' +
-//                         ' Игровое программирование на C#,' +
-//                         ' Программирование игр на JavaScript,' +
-//                         ' Игровое 3D моделирование с Blender,' +
-//                         ' Web приложения,' +
-//                         ' Гарвардский курс.' +
-//               '<br>Адрес: Actis Wunderman, Курская (Нижний сусальный пер., 5с19)')
-//     .openPopup();
+
+var numImage = 0;
+var cardOpened = false;
+
+var resetCards = function() {
+    numImage = 0;
+    if (cards) {
+        var cards = document.getElementsByClassName('card-active');
+        for (var i = 0; cards.length; i++) {
+            cards[i].classList.remove('card-active');
+        }
+    }
+}
+
+var initSlider = function() {
+
+    var sliderImages = document.querySelectorAll(".card-active .slider-images img");
+
+    var leftButton = document.querySelector(".card-active .left-button");
+    leftButton.addEventListener("click", function(){
+        sliderImages[numImage].classList.remove('show-img');
+        numImage--;
+        if (numImage < 0) {
+           numImage = sliderImages.length - 1; 
+        }
+        sliderImages[numImage].classList.add('show-img');
+    });
+
+    var rightButton = document.querySelector(".card-active .right-button");
+    rightButton.addEventListener("click", function(){
+        sliderImages[numImage].classList.remove('show-img');
+        numImage++;
+        if (numImage > sliderImages.length - 1) {
+           numImage = 0; 
+        }
+        sliderImages[numImage].classList.add('show-img');
+    });
+}
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#actis").classList.toggle("hidden");
+        resetCards();
         document.querySelector("#actis").classList.toggle("card-active");
+        cardOpened = !cardOpened;
+        if (cardOpened) {
+            initSlider();
+        }
     });   
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#ibs").classList.toggle("hidden");
+        resetCards();
         document.querySelector("#ibs").classList.toggle("card-active");
+        cardOpened = !cardOpened;
+        if (cardOpened) {
+            initSlider();
+        }
     }); 
 
 L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#deloitte").classList.toggle("hidden");
-        document.querySelector("#deloittes").classList.toggle("card-active");
+        resetCards();
+        document.querySelector("#deloitte").classList.toggle("card-active");
+        cardOpened = !cardOpened;
+        if (cardOpened) {
+            initSlider();
+        }
     });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#krock").classList.toggle("hidden");
+        resetCards();
         document.querySelector("#krock").classList.toggle("card-active");
+        cardOpened = !cardOpened;
+        if (cardOpened) {
+            initSlider();
+        }
     }); 
+
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
         document.querySelector("#finam").classList.toggle("hidden");
+        resetCards();
         document.querySelector("#finam").classList.toggle("card-active");
+        cardOpened = !cardOpened;
+        if (cardOpened) {
+            initSlider();
+        }
     }); 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
@@ -132,21 +183,3 @@ closeButton[i].addEventListener("click", function(){
 });
 }
 
-var leftButton = document.getElementsByClassName("left-button");
-for(var i = 0; i < leftButton.length; i++){
-    leftButton[i].addEventListener("click", function(){
-        // this.parentElement.classList.toggle("hidden");
-        console.log('Нажата левая кнопка');
-    });
-}
-
-var rightButton = document.getElementsByClassName("right-button");
-for(var i = 0; i < rightButton.length; i++){
-    rightButton[i].addEventListener("click", function(){
-        // this.parentElement.classList.toggle("hidden");
-        console.log('Нажата правая кнопка');
-    });
-}
-
-var sliderImages = document.querySelector(".card-active");
-console.log(sliderImages);
