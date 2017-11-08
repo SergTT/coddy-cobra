@@ -1,3 +1,3 @@
-$( "myFunction" ).click(function() {
-  $( this ).slideUp();
+$( "#myFunction" ).click(function() {
+  console.log("yyy")
 });
