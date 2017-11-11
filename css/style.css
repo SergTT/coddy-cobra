@@ -165,10 +165,6 @@ body{
     
 }
 
-.hidden {
-    display: none;
-}
-
 /* Стили для карточек */
 .card {
     position: absolute;
@@ -179,6 +175,11 @@ body{
     background: white;
     border-radius: 5px;
     padding: 10px 20px;
+    display: none;
+}
+
+.card-active {
+    display: block;
 }
 
 .exitImg {
@@ -192,7 +193,6 @@ body{
     opacity: 1;
     cursor: pointer;
 }
-
 
 .view.windows .window{
     
@@ -339,7 +339,4 @@ body{
 .show-img{
     height: 180px;
 
-}
-.bbb{
-    z-index: 99999999999;
 }

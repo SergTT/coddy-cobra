@@ -31,96 +31,110 @@ var marker = L.icon({
 
 var numImage = 0;
 var cardOpened = false;
+var currentCard;
+var sliderImages;
+var rightButton;
+var leftButton;
 
-var resetCards = function() {
-    numImage = 0;
-    if (cards) {
-        var cards = document.getElementsByClassName('card-active');
-        for (var i = 0; cards.length; i++) {
-            cards[i].classList.remove('card-active');
+// Функция получает карточку нажатого маркера
+// и управляет видимостью всех карточек
+var resetCards = function(cCard) {
+
+    // Переключаем видимость карточки
+    cCard.classList.toggle("card-active");
+
+    var cards = document.getElementsByClassName('card-active');
+
+    // Если есть открытая карточка
+    if (cards.length) {
+        // Проверяем, нажат ли новый маркер
+        for (var i = 0; i < cards.length; i++) {
+            if ( cards[i].getAttribute('id') !== cCard.getAttribute('id') ) {
+                    // Если нажат, у всех остальных карточек убираем активный класс
+                    cards[i].classList.remove('card-active');
+                }
         }
+
+        // Запускаем слайдер
+        initSlider();
     }
 }
 
 var initSlider = function() {
+    // Сбрасываем счетчик слайдера, 
+    // чтобы сперва всегда показывать первый слайд
+    numImage = 0;
 
-    var sliderImages = document.querySelectorAll(".card-active .slider-images img");
+    // Выбираем все слайды в активной карточке
+    sliderImages = document.querySelectorAll(".card-active .slider-images img");
 
-    var leftButton = document.querySelector(".card-active .left-button");
+    // Убираем показ всех слайдов 
+    for (var i = 0; i < sliderImages.length; i++) {
+        sliderImages[i].classList.remove('show-img');
+    }
+
+    // Включаем первый слайд
+    sliderImages[numImage].classList.add('show-img');
+
+    leftButton = document.querySelector(".card-active .left-button");
     leftButton.addEventListener("click", function(){
         sliderImages[numImage].classList.remove('show-img');
         numImage--;
         if (numImage < 0) {
            numImage = sliderImages.length - 1; 
         }
+
         sliderImages[numImage].classList.add('show-img');
     });
 
-    var rightButton = document.querySelector(".card-active .right-button");
+    rightButton = document.querySelector(".card-active .right-button");
     rightButton.addEventListener("click", function(){
         sliderImages[numImage].classList.remove('show-img');
         numImage++;
         if (numImage > sliderImages.length - 1) {
            numImage = 0; 
         }
+        
         sliderImages[numImage].classList.add('show-img');
     });
 }
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#actis").classList.toggle("hidden");
-        resetCards();
-        document.querySelector("#actis").classList.toggle("card-active");
-        cardOpened = !cardOpened;
-        if (cardOpened) {
-            initSlider();
-        }
+        currentCard = document.querySelector("#actis");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
     });   
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#ibs").classList.toggle("hidden");
-        resetCards();
-        document.querySelector("#ibs").classList.toggle("card-active");
-        cardOpened = !cardOpened;
-        if (cardOpened) {
-            initSlider();
-        }
+        currentCard = document.querySelector("#ibs");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
     }); 
 
 L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#deloitte").classList.toggle("hidden");
-        resetCards();
-        document.querySelector("#deloitte").classList.toggle("card-active");
-        cardOpened = !cardOpened;
-        if (cardOpened) {
-            initSlider();
-        }
+        currentCard = document.querySelector("#deloitte");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
     });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#krock").classList.toggle("hidden");
-        resetCards();
-        document.querySelector("#krock").classList.toggle("card-active");
-        cardOpened = !cardOpened;
-        if (cardOpened) {
-            initSlider();
-        }
+        currentCard = document.querySelector("#krock");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
     }); 
 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
-        document.querySelector("#finam").classList.toggle("hidden");
-        resetCards();
-        document.querySelector("#finam").classList.toggle("card-active");
-        cardOpened = !cardOpened;
-        if (cardOpened) {
-            initSlider();
-        }
+        currentCard = document.querySelector("#finam");
+        
+        resetCards(currentCard);
+        //cardOpened = !cardOpened;
     }); 
+
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
 L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
@@ -178,7 +192,6 @@ if(loaded_points.status == true ){
 var closeButton = document.getElementsByClassName("exitImg");
 for(var i = 0; i < closeButton.length; i++){
 closeButton[i].addEventListener("click", function(){
-    this.parentElement.classList.toggle("hidden");
     this.parentElement.classList.toggle("card-active")
 });
 }
