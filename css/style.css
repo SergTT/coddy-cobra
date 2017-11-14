@@ -178,10 +178,38 @@ body{
     border-radius: 5px;
     padding: 10px 20px;
     display: none;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 18px;
+}
+
+.card__logo {
+    width: 150px;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
 }
 
 .card-active {
     display: block;
+}
+
+.card h2 {
+    text-align: center;
+    font-family: 'Play', sans-serif;
+}
+
+.card a {
+    text-decoration: none;
+    color: #1cfc03;
+    font-size: 20px;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.card__route {
+    font-size: 20px;
 }
 
 .exitImg {
@@ -311,7 +339,7 @@ body{
 }
 
 .slider-images img {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: none;
 }
@@ -327,12 +355,16 @@ body{
     cursor: pointer;
 }
 
+.left-button, .right-button {
+    padding: 5px;
+}
+
 .left-button {
-    left: 15px;
+    left: 0px;
 }
 
 .right-button {
-    right: 15px;
+    right: 0px;
 }
 
 .left-button:hover, .right-button:hover {
