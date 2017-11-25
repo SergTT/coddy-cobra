@@ -15,6 +15,10 @@ var map = L.map('map',{
     attributionControl: false
 });
 
+L.control.zoom({
+     position:'topright'
+}).addTo(map);
+
 // map ранее объявленная переменая
 // setView метод, который устанавливает представление карты по координатам
 // [12.34, 12.34] первый аргумент метода, координаты на карте
