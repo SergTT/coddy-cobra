@@ -183,19 +183,16 @@ body{
 }
 
 .card__logo {
-    width: 150px;
     margin: 0 auto;
     margin-top: 10px;
     display: block;
+    margin-bottom: 20px;
+    height: 85px;
+    width: auto;
 }
 
 .card-active {
     display: block;
-}
-
-.card h2 {
-    text-align: center;
-    font-family: 'Days One', sans-serif;
 }
 
 .card a {
@@ -339,9 +336,10 @@ body{
 }
 
 .slider-images img {
-    width: 100%;
     margin: 0 auto;
     display: none;
+    height: 330px;
+    width: 100%;
 }
 
 .slider-images img.show-img {
@@ -351,7 +349,7 @@ body{
 .left-button, .right-button {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.75);
-    top: 80px;
+    top: 150px;
     cursor: pointer;
 }
 

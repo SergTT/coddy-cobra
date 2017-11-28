@@ -61,6 +61,10 @@ var resetCards = function(cCard) {
 
         // Запускаем слайдер
         initSlider();
+        
+        map.on("click", function(){
+            $(".card-active").removeClass("card-active");
+        });
     }
 }
 
