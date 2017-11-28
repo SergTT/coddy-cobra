@@ -109,7 +109,7 @@ var initSlider = function() {
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#actis");
+        currentCard = document.querySelector("#actis-glowbite");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });   

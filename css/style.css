@@ -375,3 +375,11 @@ body{
     line-height: 50px;
                 
 }
+.tabs p{
+    display: inline-block;
+    border: 2px solid #bbb;
+    border-bottom: 2px solid transparent;
+    border-radius: 3px 3px 0px 0px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
