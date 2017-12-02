@@ -112,7 +112,7 @@ L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
         currentCard = document.querySelector("#actis-glowbite");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
-    });   
+    });
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
@@ -141,7 +141,13 @@ L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
         
         resetCards(currentCard);
         //cardOpened = !cardOpened;
-    }); 
+    });
+L.marker([55.707740, 37.724175], {icon: marker}).addTo(map)
+    .on("click", function(){
+        currentCard = document.querySelector("#nexTouch");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
+    });
 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
