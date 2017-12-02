@@ -109,42 +109,42 @@ var initSlider = function() {
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#actis-glowbite").parentNode;
+        currentCard = document.querySelector("#actis-glowbite");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#ibs").parentNode;
+        currentCard = document.querySelector("#ibs");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     }); 
 
 L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#deloitte").parentNode;
+        currentCard = document.querySelector("#deloitte");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#krock").parentNode;
+        currentCard = document.querySelector("#krock");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     }); 
 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#finam").parentNode;
+        currentCard = document.querySelector("#finam");
         
         resetCards(currentCard);
         //cardOpened = !cardOpened;
     });
 L.marker([55.707740, 37.724175], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#nexTouch").parentNode;
+        currentCard = document.querySelector("#nexTouch");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
