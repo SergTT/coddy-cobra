@@ -165,8 +165,8 @@ body{
     
 }
 
-/* Стили для карточек */
-.card {
+.card-contaner {
+    display: none;
     position: absolute;
     top: 90px;
     left: 30px;
@@ -177,9 +177,13 @@ body{
     background: white;
     border-radius: 5px;
     padding: 10px 20px;
-    display: none;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
+}
+
+/* Стили для карточек */
+.card {
+    
 }
 
 .card__logo {

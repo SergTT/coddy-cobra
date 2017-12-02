@@ -109,42 +109,42 @@ var initSlider = function() {
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#actis-glowbite");
+        currentCard = document.querySelector("#actis-glowbite").parentNode;
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
 
 L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#ibs");
+        currentCard = document.querySelector("#ibs").parentNode;
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     }); 
 
 L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#deloitte");
+        currentCard = document.querySelector("#deloitte").parentNode;
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
 
 L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#krock");
+        currentCard = document.querySelector("#krock").parentNode;
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     }); 
 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#finam");
+        currentCard = document.querySelector("#finam").parentNode;
         
         resetCards(currentCard);
         //cardOpened = !cardOpened;
     });
 L.marker([55.707740, 37.724175], {icon: marker}).addTo(map)
     .on("click", function(){
-        currentCard = document.querySelector("#nexTouch");
+        currentCard = document.querySelector("#nexTouch").parentNode;
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
@@ -206,7 +206,7 @@ if(loaded_points.status == true ){
 var closeButton = document.getElementsByClassName("exitImg");
 for(var i = 0; i < closeButton.length; i++){
 closeButton[i].addEventListener("click", function(){
-    this.parentElement.classList.toggle("card-active")
+    this.parentElement.parentElement.classList.toggle("card-active")
 });
 }
 
