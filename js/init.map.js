@@ -148,6 +148,12 @@ L.marker([55.707740, 37.724175], {icon: marker}).addTo(map)
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
     });
+L.marker([55.758737, 37.820825], {icon: marker}).addTo(map)
+    .on("click", function(){
+        currentCard = document.querySelector("#MosArt");
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
+    });
 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
