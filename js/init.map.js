@@ -39,11 +39,31 @@ var currentCard;
 var sliderImages;
 var rightButton;
 var leftButton;
+var tabs;
 
 // Функция получает карточку нажатого маркера
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
+    
+    tabs = cCard.querySelectorAll(".js_tab");
+    for(var i = 0; i < tabs.length; i++){
 
+    tabs[i].addEventListener("click", function(){
+        if(this.getAttribute("data-tab") == "actis") {
+            cCard.querySelector("#actis").classList.remove("hidden");
+            cCard.querySelector("#glowbite").classList.add("hidden");
+            console.log("a")
+       }
+        if(this.getAttribute("data-tab") == "glowbite") {
+            cCard.querySelector("#glowbite").classList.remove=("hidden");
+            cCard.querySelector("#actis").classList.add=("hidden");
+            console.log("b")
+       }
+    
+        
+});
+}
+    
     // Переключаем видимость карточки
     cCard.classList.toggle("card-active");
 

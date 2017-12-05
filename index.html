@@ -50,15 +50,15 @@
             <div id="actis-glowbite" class="card-container">
                 
                 <div class="tabs">
-                    <p id="actis-tab" class="tab-active">
+                    <p id="actis-tab" class="tab-active js_tab" data-tab="actis">
                         Actis Wunderman
                     </p>
-                    <p id="glowbite-tab">
+                    <p id="glowbite-tab" class="js_tab" data-tab="glowbite">
                         Glowbite
                     </p>
                 </div>
             <!-- Задаем карточки филиалов -->
-            <div id="actis" class=""> <!-- Карточка Actis Wunderman -->
+            <div id="actis" class="card"> <!-- Карточка Actis Wunderman -->
                 <img class="exitImg" src="img/exit.svg">
                 <img class="card__logo" src="img/logo-actis.png">
                 <div class="slider">
@@ -92,8 +92,9 @@
                 <p class="card__route"><a href="img/pdf/actis_scheme.pdf" target="_blank">Схема проезда (PDF)</a></p>
                 <p class="card__sotial"><a href="https://www.facebook.com/wunderman.ru/" target="_blank" class="card__sotial-fb"><img src="img/logo-fb.png"></a><a href="https://vk.com/wunderman" target="_blank" class="card__sotial-vk"><img src="img/logo-vk.png"></a></p>
             </div>
+                
             <!-- Задаем карточки филиалов -->
-            <div id="glowbite" class="card"> <!-- Карточка glowbite -->
+            <div id="glowbite" class="card hidden"> <!-- Карточка glowbite -->
                 <img class="exitImg" src="img/exit.svg">
                 <img class="card__logo" src="img/logo-actis.png">
                 <div class="slider">
@@ -130,7 +131,7 @@
             </div>
             
             <div id="ibs" class="card-container">
-                <div  class="">
+                <div  class="card">
                 <img class="exitImg" src="img/exit.svg">
                     <img class="card__logo" src="img/Logo__ibs.jpg">
                     <div class="slider">
