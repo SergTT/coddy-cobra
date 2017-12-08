@@ -379,14 +379,31 @@ body{
     line-height: 50px;
                 
 }
-.tabs p{
+
+.tabs {
+    margin-bottom: 20px;
+    border-bottom: 2px solid #bbb;
+}
+
+.tabs p {
     display: inline-block;
     border: 2px solid #bbb;
     border-bottom: 2px solid transparent;
     border-radius: 3px 3px 0px 0px;
     padding: 5px 10px;
     margin-right: 10px;
+    margin-bottom: 0;
 }
+
+.tabs p:hover {
+    cursor: pointer;
+    background-color: #e2e2e2;
+}
+
+.tab-active {
+    background-color: #f7f6f6;
+}
+
 .hidden{
     display: none;
 }
