@@ -103,7 +103,7 @@ var initSlider = function() {
     numImage = 0;
 
     // Выбираем все слайды в активной карточке
-    sliderImages = document.querySelectorAll(".card-active .slider-images img");
+    sliderImages = document.querySelectorAll(".card-active .card:not(.hidden) .slider-images img");
 
     // Убираем показ всех слайдов 
     for (var i = 0; i < sliderImages.length; i++) {
