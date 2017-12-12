@@ -45,24 +45,33 @@ var tabs;
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
     
+    // Сохраняем табы карточки в переменную
     tabs = cCard.querySelectorAll(".js_tab");
+    
+    // Для каждой табы добавляем отслеживание клика
     for(var i = 0; i < tabs.length; i++){
 
-    tabs[i].addEventListener("click", function(){
-        if(this.getAttribute("data-tab") == "actis") {
-            cCard.querySelector("#actis").classList.remove("hidden");
-            cCard.querySelector("#glowbite").classList.add("hidden");
-            console.log("a")
-       }
-        if(this.getAttribute("data-tab") == "glowbite") {
-            cCard.querySelector("#glowbite").classList.remove=("hidden");
-            cCard.querySelector("#actis").classList.add=("hidden");
-            console.log("b")
-       }
-    
-        
-});
-}
+        tabs[i].addEventListener("click", function(){
+
+            // Если нажали табу закрытой карточки
+            if ( this.getAttribute("data-tab") == cCard.querySelector(".hidden").getAttribute("id") ) {
+
+                for (var j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove("tab-active");
+                }
+
+                this.classList.add("tab-active");
+
+                var cardsToCheck = cCard.querySelectorAll(".card");
+
+                for (var j = 0; j < cardsToCheck.length; j++) {
+                    cardsToCheck[j].classList.add("hidden");
+                }
+
+                cCard.querySelector("#" + this.getAttribute("data-tab")).classList.remove("hidden");
+            } 
+        });
+    }
     
     // Переключаем видимость карточки
     cCard.classList.toggle("card-active");
@@ -232,7 +241,7 @@ if(loaded_points.status == true ){
 var closeButton = document.getElementsByClassName("exitImg");
 for(var i = 0; i < closeButton.length; i++){
 closeButton[i].addEventListener("click", function(){
-    this.parentElement.parentElement.classList.toggle("card-active")
+    this.parentElement.classList.toggle("card-active");
 });
 }
 
