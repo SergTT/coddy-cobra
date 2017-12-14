@@ -45,6 +45,8 @@ var tabs;
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
     
+    var thisTabCard;
+
     // Сохраняем табы карточки в переменную
     tabs = cCard.querySelectorAll(".js_tab");
     
@@ -53,26 +55,39 @@ var resetCards = function(cCard) {
 
         tabs[i].addEventListener("click", function(){
 
-            // Если нажали табу закрытой карточки
-            if ( this.getAttribute("data-tab") == cCard.querySelector(".hidden").getAttribute("id") ) {
+            // Если нажали табу закрытого филиала
+            if (this.getAttribute("data-tab") == cCard.querySelector(".hidden").getAttribute("id") ) {
 
                 for (var j = 0; j < tabs.length; j++) {
+                    // у всех табов убираем активный класс
                     tabs[j].classList.remove("tab-active");
                 }
 
+                // добавляем активный класс нажатой табе
                 this.classList.add("tab-active");
 
+                // Сохраняем все филиалы на открытой карточке
                 var cardsToCheck = cCard.querySelectorAll(".card");
 
                 for (var j = 0; j < cardsToCheck.length; j++) {
+                    // скрываем все филиалы на открытой карточке
                     cardsToCheck[j].classList.add("hidden");
                 }
 
-                cCard.querySelector("#" + this.getAttribute("data-tab")).classList.remove("hidden");
+                
+                //cCard.querySelector("#" + this.getAttribute("data-tab")).classList.remove("hidden");
+
+                thisTabCard = cCard.querySelector("#" + this.getAttribute("data-tab"));
+
+                // Показываем только филиал, соответствующий нажатой табе
+                thisTabCard.classList.remove("hidden");
+
+                initSlider(thisTabCard);
             } 
+
         });
     }
-    
+
     // Переключаем видимость карточки
     cCard.classList.toggle("card-active");
 
@@ -89,21 +104,34 @@ var resetCards = function(cCard) {
         }
 
         // Запускаем слайдер
-        initSlider();
-        
+        // Если есть табы (карточка двойная)
+        if (tabs.length) {
+            // вызываем слайдер на открытой табе
+            //console.log(thisTabCard);
+            //initSlider(thisTabCard);
+        }
+        // если табов нет (карточка одинарная)
+        else {
+            // вызываем слайдер на открытой карточке
+            //console.log(Card.querySelector('.card'));
+            //initSlider(cCard.querySelector('.card'));
+        }
+initSlider(cCard.querySelector('.card'));
+        // При клике вне карточки закрываем ее
         map.on("click", function(){
             $(".card-active").removeClass("card-active");
         });
     }
 }
 
-var initSlider = function() {
+var initSlider = function(cardSlider) {
+    console.log('Зпускаю слайдер...');
     // Сбрасываем счетчик слайдера, 
     // чтобы сперва всегда показывать первый слайд
     numImage = 0;
 
     // Выбираем все слайды в активной карточке
-    sliderImages = document.querySelectorAll(".card-active .card:not(.hidden) .slider-images img");
+    sliderImages = cardSlider.querySelectorAll(".slider-images img");
 
     // Убираем показ всех слайдов 
     for (var i = 0; i < sliderImages.length; i++) {
@@ -113,7 +141,7 @@ var initSlider = function() {
     // Включаем первый слайд
     sliderImages[numImage].classList.add('show-img');
 
-    leftButton = document.querySelector(".card-active .left-button");
+    leftButton = cardSlider.querySelector(".left-button");
     leftButton.addEventListener("click", function(){
         sliderImages[numImage].classList.remove('show-img');
         numImage--;
@@ -124,7 +152,7 @@ var initSlider = function() {
         sliderImages[numImage].classList.add('show-img');
     });
 
-    rightButton = document.querySelector(".card-active .right-button");
+    rightButton = cardSlider.querySelector(".right-button");
     rightButton.addEventListener("click", function(){
         sliderImages[numImage].classList.remove('show-img');
         numImage++;
