@@ -6,7 +6,7 @@ var map = L.map('map',{
     
     // zoomControl дополнительный параметр метода map, настраивающий отображение панели управления маштабом
     // false (логическое значение) скрыть
-    // true (логическое значение) показать
+    // true (логическое значение) показать
     zoomControl: false,
     
     // attributionControl дополнительный параметр метода map, настраивающий отображение данных о аттрибуции
@@ -33,7 +33,6 @@ var marker = L.icon({
     shadowAnchor: [12, 16]
 });
 
-var numImage = 0;
 var cardOpened = false;
 var currentCard;
 var sliderImages;
@@ -125,10 +124,10 @@ initSlider(cCard.querySelector('.card'));
 }
 
 var initSlider = function(cardSlider) {
-    console.log('Зпускаю слайдер...');
+    console.log('Slider init...');
     // Сбрасываем счетчик слайдера, 
     // чтобы сперва всегда показывать первый слайд
-    numImage = 0;
+    var numImage = 0;
 
     // Выбираем все слайды в активной карточке
     sliderImages = cardSlider.querySelectorAll(".slider-images img");
@@ -143,6 +142,7 @@ var initSlider = function(cardSlider) {
 
     leftButton = cardSlider.querySelector(".left-button");
     leftButton.addEventListener("click", function(){
+        console.log(numImage);
         sliderImages[numImage].classList.remove('show-img');
         numImage--;
         if (numImage < 0) {
@@ -154,6 +154,7 @@ var initSlider = function(cardSlider) {
 
     rightButton = cardSlider.querySelector(".right-button");
     rightButton.addEventListener("click", function(){
+        console.log(numImage);
         sliderImages[numImage].classList.remove('show-img');
         numImage++;
         if (numImage > sliderImages.length - 1) {
