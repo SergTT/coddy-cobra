@@ -1,17 +1,15 @@
-// var объявляет переменную
-// map название переменной
 // L вызов библиотеки Leaflet
 // map метод выбора элемента для помещения в него карты
 var map = L.map('map',{
     
     // zoomControl дополнительный параметр метода map, настраивающий отображение панели управления маштабом
-    // false (логическое значение) скрыть
-    // true (логическое значение) показать
+    // false - скрыть
+    // true - показать
     zoomControl: false,
     
     // attributionControl дополнительный параметр метода map, настраивающий отображение данных о аттрибуции
-    // false (логическое значение) скрыть
-    // true (логическое значение) показать
+    // false - скрыть
+    // true - показать
     attributionControl: false
 });
 
@@ -19,11 +17,10 @@ L.control.zoom({
      position:'topright'
 }).addTo(map);
 
-// map ранее объявленная переменая
 // setView метод, который устанавливает представление карты по координатам
-// [12.34, 12.34] первый аргумент метода, координаты на карте
-// 13 второй аргумент функции, масштаб карты
-map.setView([55.7540, 37.6203],13);
+// [55.7540, 37.6203] - первый аргумент метода, координаты на карте
+// 13 - второй аргумент функции, масштаб карты
+map.setView([55.7540, 37.6203], 13);
 
 var marker = L.icon({
     iconUrl: 'img/marker.png',
@@ -33,17 +30,15 @@ var marker = L.icon({
     shadowAnchor: [12, 16]
 });
 
-var cardOpened = false;
-var currentCard;
-var sliderImages;
-var rightButton;
-var leftButton;
-var tabs;
+var cardOpened = false,
+    currentCard,
+    sliderImages,
+    tabs;
 
 // Функция получает карточку нажатого маркера
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
-    
+
     var thisTabCard;
 
     // Сохраняем табы карточки в переменную
@@ -73,9 +68,6 @@ var resetCards = function(cCard) {
                     cardsToCheck[j].classList.add("hidden");
                 }
 
-                
-                //cCard.querySelector("#" + this.getAttribute("data-tab")).classList.remove("hidden");
-
                 thisTabCard = cCard.querySelector("#" + this.getAttribute("data-tab"));
 
                 // Показываем только филиал, соответствующий нажатой табе
@@ -90,36 +82,38 @@ var resetCards = function(cCard) {
     // Переключаем видимость карточки
     cCard.classList.toggle("card-active");
 
+    // Сохраняем в переменную все открытые карточки
     var cards = document.getElementsByClassName('card-active');
-
+    //console.log(cards[0]);
     // Если есть открытая карточка
     if (cards.length) {
         // Проверяем, нажат ли новый маркер
         for (var i = 0; i < cards.length; i++) {
             if ( cards[i].getAttribute('id') !== cCard.getAttribute('id') ) {
-                    // Если нажат, у всех остальных карточек убираем активный класс
-                    cards[i].classList.remove('card-active');
-                }
+                // Если нажат, у всех остальных карточек убираем активный класс
+                cards[i].classList.remove('card-active');
+            }
         }
 
         // Запускаем слайдер
         // Если есть табы (карточка двойная)
         if (tabs.length) {
             // вызываем слайдер на открытой табе
-            //console.log(thisTabCard);
             //initSlider(thisTabCard);
         }
         // если табов нет (карточка одинарная)
         else {
             // вызываем слайдер на открытой карточке
-            //console.log(Card.querySelector('.card'));
             //initSlider(cCard.querySelector('.card'));
         }
-initSlider(cCard.querySelector('.card'));
+
+        // Запускаем слайдер
+        initSlider(cCard.querySelector('.card'));
+        
         // При клике вне карточки закрываем ее
-        map.on("click", function(){
-            $(".card-active").removeClass("card-active");
-        });
+        // map.on("click", function(){
+        //     $(".card-active").removeClass("card-active");
+        // });
     }
 }
 
@@ -138,10 +132,12 @@ var initSlider = function(cardSlider) {
     }
 
     // Включаем первый слайд
-    sliderImages[numImage].classList.add('show-img');
+    sliderImages[0].classList.add('show-img');
 
-    leftButton = cardSlider.querySelector(".left-button");
+    var leftButton = cardSlider.querySelector(".left-button");
+    //console.log(leftButton);
     leftButton.addEventListener("click", function(){
+        console.log('Left button pressed on the ' + cardSlider.parentNode.getAttribute('id') + ' card.');
         console.log(numImage);
         sliderImages[numImage].classList.remove('show-img');
         numImage--;
@@ -152,8 +148,9 @@ var initSlider = function(cardSlider) {
         sliderImages[numImage].classList.add('show-img');
     });
 
-    rightButton = cardSlider.querySelector(".right-button");
+    var rightButton = cardSlider.querySelector(".right-button");
     rightButton.addEventListener("click", function(){
+        console.log('Right button pressed on the ' + cardSlider.parentNode.getAttribute('id') + ' card.');
         console.log(numImage);
         sliderImages[numImage].classList.remove('show-img');
         numImage++;
@@ -230,12 +227,8 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
     
 }).addTo(map);
 
-
 var loaded_points = load_points();
 
-// if условный оператор "если"
-// load_points переменная
-// == оператор сравние на точное совпадение или равенства
 if(loaded_points.status == true ){
     
     // load_points.data.points
@@ -262,15 +255,26 @@ if(loaded_points.status == true ){
     // track ранее обявленная переменная, подставляется в параметр latlngs
     create_track(map, track);
     
-}else{
+} else{
     
     // вывод в консоль
     //console.log('не удалось загрузить метки');
 }
-var closeButton = document.getElementsByClassName("exitImg");
-for(var i = 0; i < closeButton.length; i++){
-closeButton[i].addEventListener("click", function(){
-    this.parentElement.classList.toggle("card-active");
+
+// При клике вне карточки закрываем ее
+map.on("click", function(){
+    //resetCards($(".card-active"[0]));
+    $(".card-active").removeClass("card-active");
+    //console.log($(".card-active"));
 });
+
+// Сохраняем кнопки закрытия карточек в переменную
+var closeButton = document.getElementsByClassName("exitImg");
+
+// Всем этим кнопкам добавляем отслеживане события "клик
+for(var i = 0; i < closeButton.length; i++){
+    closeButton[i].addEventListener("click", function(){
+        this.parentElement.classList.toggle("card-active");
+    });
 }
 
