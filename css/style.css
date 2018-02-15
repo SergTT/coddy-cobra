@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'NotoSansRegular';
+    src: url('../fonts/NotoSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSansBold';
+    src: url('../fonts/NotoSans-Bold.ttf') format('truetype');
+}
+
 html{
     /* Отображение элемента: Блок */
     display: block;
@@ -177,8 +189,9 @@ body{
     background: white;
     border-radius: 5px;
     padding: 10px 20px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
+    font-family: 'NotoSansRegular';
+    font-size: 16px;
+    line-height: 1.4em;
 }
 
 /* Стили для карточек */

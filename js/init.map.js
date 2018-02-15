@@ -1,12 +1,12 @@
 // L вызов библиотеки Leaflet
 // map метод выбора элемента для помещения в него карты
 var map = L.map('map',{
-    
+
     // zoomControl дополнительный параметр метода map, настраивающий отображение панели управления маштабом
     // false - скрыть
     // true - показать
     zoomControl: false,
-    
+
     // attributionControl дополнительный параметр метода map, настраивающий отображение данных о аттрибуции
     // false - скрыть
     // true - показать
@@ -20,7 +20,7 @@ L.control.zoom({
 // setView метод, который устанавливает представление карты по координатам
 // [55.7540, 37.6203] - первый аргумент метода, координаты на карте
 // 13 - второй аргумент функции, масштаб карты
-map.setView([55.7540, 37.6203], 13);
+map.setView([55.7540, 37.6203], 12);
 
 var marker = L.icon({
     iconUrl: 'img/marker.png',
@@ -33,58 +33,68 @@ var marker = L.icon({
 var cardOpened = false,
     currentCard,
     sliderImages,
+    cards,
+    numImage,
+    leftButton,
+    rightButton,
+    thisTabCard,
     tabs;
+
+// Обрабатываем событие нажатой табы
+var tabPressed = function(evt) {
+
+    // Если нажали табу закрытого филиала
+    if (this.getAttribute("data-tab") == evt.target.cardParent.querySelector(".hidden").getAttribute("id") ) {
+
+        for (var j = 0; j < tabs.length; j++) {
+            // у всех табов убираем активный класс
+            tabs[j].classList.remove("tab-active");
+        }
+
+        // добавляем активный класс нажатой табе
+        this.classList.add("tab-active");
+
+        // Сохраняем все филиалы на открытой карточке
+        var cardsToCheck = evt.target.cardParent.querySelectorAll(".card");
+
+        for (var j = 0; j < cardsToCheck.length; j++) {
+            // скрываем все филиалы на открытой карточке
+            cardsToCheck[j].classList.add("hidden");
+        }
+
+        thisTabCard = evt.target.cardParent.querySelector("#" + this.getAttribute("data-tab"));
+
+        // Показываем только филиал, соответствующий нажатой табе
+        thisTabCard.classList.remove("hidden");
+
+        // Вызываем слайдер на активной табе
+        initSlider(thisTabCard);
+    }
+}
 
 // Функция получает карточку нажатого маркера
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
 
-    var thisTabCard;
-
     // Сохраняем табы карточки в переменную
     tabs = cCard.querySelectorAll(".js_tab");
-    
+
     // Для каждой табы добавляем отслеживание клика
     for(var i = 0; i < tabs.length; i++){
 
-        tabs[i].addEventListener("click", function(){
+        // Добавляем параметр - карточку, на которой расположена таба
+        tabs[i].cardParent = cCard;
 
-            // Если нажали табу закрытого филиала
-            if (this.getAttribute("data-tab") == cCard.querySelector(".hidden").getAttribute("id") ) {
-
-                for (var j = 0; j < tabs.length; j++) {
-                    // у всех табов убираем активный класс
-                    tabs[j].classList.remove("tab-active");
-                }
-
-                // добавляем активный класс нажатой табе
-                this.classList.add("tab-active");
-
-                // Сохраняем все филиалы на открытой карточке
-                var cardsToCheck = cCard.querySelectorAll(".card");
-
-                for (var j = 0; j < cardsToCheck.length; j++) {
-                    // скрываем все филиалы на открытой карточке
-                    cardsToCheck[j].classList.add("hidden");
-                }
-
-                thisTabCard = cCard.querySelector("#" + this.getAttribute("data-tab"));
-
-                // Показываем только филиал, соответствующий нажатой табе
-                thisTabCard.classList.remove("hidden");
-
-                initSlider(thisTabCard);
-            } 
-
-        });
+        // При нажатии на табу вызываем обработку клика
+        tabs[i].addEventListener("click", tabPressed);
     }
 
     // Переключаем видимость карточки
     cCard.classList.toggle("card-active");
 
     // Сохраняем в переменную все открытые карточки
-    var cards = document.getElementsByClassName('card-active');
-    //console.log(cards[0]);
+    cards = document.getElementsByClassName('card-active');
+
     // Если есть открытая карточка
     if (cards.length) {
         // Проверяем, нажат ли новый маркер
@@ -96,37 +106,40 @@ var resetCards = function(cCard) {
         }
 
         // Запускаем слайдер
-        // Если есть табы (карточка двойная)
-        if (tabs.length) {
-            // вызываем слайдер на открытой табе
-            //initSlider(thisTabCard);
-        }
-        // если табов нет (карточка одинарная)
-        else {
-            // вызываем слайдер на открытой карточке
-            //initSlider(cCard.querySelector('.card'));
-        }
-
-        // Запускаем слайдер
-        initSlider(cCard.querySelector('.card'));
-        
-        // При клике вне карточки закрываем ее
-        // map.on("click", function(){
-        //     $(".card-active").removeClass("card-active");
-        // });
+        initSlider(cCard.querySelector('.card:not(.hidden)'));
     }
 }
 
+var leftButtonPressed = function(evt) {
+        sliderImages[numImage].classList.remove('show-img');
+        numImage--;
+        if (numImage < 0) {
+           numImage = sliderImages.length - 1;
+        }
+
+        sliderImages[numImage].classList.add('show-img');
+}
+
+var rightButtonPressed = function(evt) {
+        sliderImages[numImage].classList.remove('show-img');
+        numImage++;
+        if (numImage > sliderImages.length - 1) {
+           numImage = 0;
+        }
+
+        sliderImages[numImage].classList.add('show-img');
+}
+
 var initSlider = function(cardSlider) {
-    console.log('Slider init...');
-    // Сбрасываем счетчик слайдера, 
+
+    // Сбрасываем счетчик слайдера,
     // чтобы сперва всегда показывать первый слайд
-    var numImage = 0;
+    numImage = 0;
 
     // Выбираем все слайды в активной карточке
     sliderImages = cardSlider.querySelectorAll(".slider-images img");
 
-    // Убираем показ всех слайдов 
+    // Убираем показ всех слайдов
     for (var i = 0; i < sliderImages.length; i++) {
         sliderImages[i].classList.remove('show-img');
     }
@@ -134,32 +147,14 @@ var initSlider = function(cardSlider) {
     // Включаем первый слайд
     sliderImages[0].classList.add('show-img');
 
-    var leftButton = cardSlider.querySelector(".left-button");
-    //console.log(leftButton);
-    leftButton.addEventListener("click", function(){
-        console.log('Left button pressed on the ' + cardSlider.parentNode.getAttribute('id') + ' card.');
-        console.log(numImage);
-        sliderImages[numImage].classList.remove('show-img');
-        numImage--;
-        if (numImage < 0) {
-           numImage = sliderImages.length - 1; 
-        }
+    // Сохраняем кнопки слайдера в переменные
+    leftButton = cardSlider.querySelector(".left-button");
+    rightButton = cardSlider.querySelector(".right-button");
 
-        sliderImages[numImage].classList.add('show-img');
-    });
+    // Добавляем отслеживание клика на кнопки слайдера
+    leftButton.addEventListener("click", leftButtonPressed, false);
+    rightButton.addEventListener("click", rightButtonPressed, false);
 
-    var rightButton = cardSlider.querySelector(".right-button");
-    rightButton.addEventListener("click", function(){
-        console.log('Right button pressed on the ' + cardSlider.parentNode.getAttribute('id') + ' card.');
-        console.log(numImage);
-        sliderImages[numImage].classList.remove('show-img');
-        numImage++;
-        if (numImage > sliderImages.length - 1) {
-           numImage = 0; 
-        }
-        
-        sliderImages[numImage].classList.add('show-img');
-    });
 }
 
 L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
@@ -174,7 +169,7 @@ L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
         currentCard = document.querySelector("#ibs");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
-    }); 
+    });
 
 L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
     .on("click", function(){
@@ -188,12 +183,12 @@ L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
         currentCard = document.querySelector("#krock");
         // При клике на маркер запускаем обработку видимости карточек
         resetCards(currentCard);
-    }); 
+    });
 
 L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
     .on("click", function(){
         currentCard = document.querySelector("#finam");
-        
+
         resetCards(currentCard);
         //cardOpened = !cardOpened;
     });
@@ -213,59 +208,56 @@ L.marker([55.758737, 37.820825], {icon: marker}).addTo(map)
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
 L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
-    
+
     // параметр метода attribution вписывает описание о лицензии
     //на основе которой используются те или иные слои тайлов
     attribution: 'даные &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> обеденение, ' +
     'Фрагменты @ <a href="http://kosmosnimki.ru">Kosmosnimki</a>',
-    
+
     // параметры метода minZoom устанавливает минимальное приближение маштаба
     minZoom: 4,
-    
+
     // параметры метода maxZoom устанавливает максимальное приближение маштаба
     maxZoom: 18
-    
+
 }).addTo(map);
 
 var loaded_points = load_points();
 
 if(loaded_points.status == true ){
-    
+
     // load_points.data.points
     // forEach метод работы с массивами, пробежка по каждому элементу
     // function(point) выполняет действие с передачей load_points.data.points в переменную point
     loaded_points.data.point.forEach(function(point){
-        
+
         // create_marker вызов ранее объявленой функции
         // map первый аргумент функции, подставляем значение переменной map
         // location.geo.latitude подставка значение переменной point > location> geo > latitude
         // location.geo.longitude подставка значение переменной point > location> geo > longitude
         create_marker(map, point.location.geo.latitude, point.location.geo.longitude);
-        
+
     });
-    
+
     // var объявляет переменную
     // track название переменной
     // points_array вызов ранее объявленной функции
     // loaded_points подставка раннее объявленной переменной
     var track = points_array(loaded_points);
-    
+
     // create_track вызов ранее объявленной функции
     // map параметр функции, подставляется ранее объявленная переменная map
     // track ранее обявленная переменная, подставляется в параметр latlngs
     create_track(map, track);
-    
+
 } else{
-    
     // вывод в консоль
     //console.log('не удалось загрузить метки');
 }
 
 // При клике вне карточки закрываем ее
 map.on("click", function(){
-    //resetCards($(".card-active"[0]));
     $(".card-active").removeClass("card-active");
-    //console.log($(".card-active"));
 });
 
 // Сохраняем кнопки закрытия карточек в переменную
