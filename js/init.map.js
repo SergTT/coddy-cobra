@@ -1,3 +1,71 @@
+// Функция отвечает за получение данных филиалов и формирование HTML-разметки для них
+function setCardData(cardObj) {
+
+    // Если есть табы
+    if (cardObj.tabs) {
+        var dataTab = '<div class="tabs">';
+        // Получаем табы и формируем для них HTML-разметку
+        cardObj.tabs.forEach(function(cardTab){
+            dataTab += '<p id="' + cardTab.tabId +
+                '" class="' + (cardTab.tabActive ? 'tab-active js_tab' : 'js_tab') +
+                '" data-tab="' + cardTab.cardId +
+                '">' + cardTab.name + '</p>';
+        });
+        dataTab += '</div>';
+    }
+
+    // Получаем данные карточек и формируем для них HTML-разметку
+    var cardContent = '';
+    cardObj.cards.forEach(function(cardInfo){
+
+        // Получаем список изображений для слайдера и помещаем их в тег img
+        var dataSlider = '';
+        cardInfo.images.forEach(function(cardSliderArr){
+            dataSlider+='<img src="img/slider/' + cardSliderArr + '">';
+        });
+
+        // Формируем разметку для описания филиала (разбиваем на параграфы)
+        var dataDescription = '';
+        var cardDescRaw = cardInfo.description.split('\n');
+        cardDescRaw.forEach(function(cardDescParagraph){
+            dataDescription += '<p class="card__description">' + cardDescParagraph + '</p>';
+        });
+
+        cardContent += (cardInfo.cardId ? '<div id="' + cardInfo.cardId + '" ' : '<div ') +
+            (cardInfo.hidden ? 'class="hidden card">' : 'class="card">') +
+            '<img class="card__logo" src="img/' + cardInfo.logo + '">' +
+            '<div class="slider"><div class="slider-images">' + dataSlider + '</div>' +
+            '<div class="slider-control"><img class="left-button" src="img/left.png"><img class="right-button" src="img/right.png"></div></div>' + dataDescription +
+            '<p class="card__site"><a href="' + cardInfo.site + '" target="_blank">Сайт компании</a></p>' +
+            '<p class="metro">' + cardInfo.metro + '</p>' +
+            '<p class="card__adress">' + cardInfo.adress + '</p>' +
+            '<p class="card__route"><a target="_blank" href="' + cardInfo.routeGoogle + '" >Схема проезда (Google Maps)</a></p>' +
+            '<p class="card__route"><a target="_blank" href="img/pdf/' + cardInfo.routePDF + '" >Схема проезда (PDF)</a></p>' +
+            '<p class="card__sotial">' +
+            (cardInfo.fb ? '<a target="_blank" href="' + cardInfo.fb + '"><img src="img/logo-fb.png"></a>' : '') +
+            (cardInfo.vk ? '<a target="_blank" href="' + cardInfo.vk + '"><img src="img/logo-vk.png"></a>' : '') + '</p></div>';
+    });
+
+    var cardData = '<div id="' + cardObj.id + '" class="card-container">' +
+        '<img class="exitImg" src="img/exit.svg">' +
+        (dataTab ? dataTab : '') + cardContent + '</div>';
+
+    // Вставляем HTML-разметку филиалов на страницу
+    $('.map').after(cardData);
+
+}
+
+// Получаем информацию о филиалах из JSON-файла настроек
+var coddyData = load_points();
+
+if(coddyData.status == true ){
+    // Из данных филиалов получаем HTML-разметку
+    coddyData.data.forEach(setCardData);
+} else{
+    var $loadingFailedMessage = $('body').append('<div class="loading-failed-message hidden">Не удалось загрузить информацию о филиалах. <br /> Убедитесь, что файл настроек доступен и содержит корректную информацию. </div>');
+    console.log('не удалось загрузить метки');
+}
+
 // L вызов библиотеки Leaflet
 // map метод выбора элемента для помещения в него карты
 var map = L.map('map',{
@@ -19,7 +87,7 @@ L.control.zoom({
 
 // setView метод, который устанавливает представление карты по координатам
 // [55.7540, 37.6203] - первый аргумент метода, координаты на карте
-// 13 - второй аргумент функции, масштаб карты
+// 12 - второй аргумент функции, масштаб карты
 map.setView([55.7540, 37.6203], 12);
 
 var marker = L.icon({
@@ -76,37 +144,43 @@ var tabPressed = function(evt) {
 // и управляет видимостью всех карточек
 var resetCards = function(cCard) {
 
-    // Сохраняем табы карточки в переменную
-    tabs = cCard.querySelectorAll(".js_tab");
+    if(coddyData.status == true ) {
+        // Сохраняем табы карточки в переменную
+        tabs = cCard.querySelectorAll(".js_tab");
 
-    // Для каждой табы добавляем отслеживание клика
-    for(var i = 0; i < tabs.length; i++){
+        // Для каждой табы добавляем отслеживание клика
+        for(var i = 0; i < tabs.length; i++){
 
-        // Добавляем параметр - карточку, на которой расположена таба
-        tabs[i].cardParent = cCard;
+            // Добавляем параметр - карточку, на которой расположена таба
+            tabs[i].cardParent = cCard;
 
-        // При нажатии на табу вызываем обработку клика
-        tabs[i].addEventListener("click", tabPressed);
-    }
-
-    // Переключаем видимость карточки
-    cCard.classList.toggle("card-active");
-
-    // Сохраняем в переменную все открытые карточки
-    cards = document.getElementsByClassName('card-active');
-
-    // Если есть открытая карточка
-    if (cards.length) {
-        // Проверяем, нажат ли новый маркер
-        for (var i = 0; i < cards.length; i++) {
-            if ( cards[i].getAttribute('id') !== cCard.getAttribute('id') ) {
-                // Если нажат, у всех остальных карточек убираем активный класс
-                cards[i].classList.remove('card-active');
-            }
+            // При нажатии на табу вызываем обработку клика
+            tabs[i].addEventListener("click", tabPressed);
         }
 
-        // Запускаем слайдер
-        initSlider(cCard.querySelector('.card:not(.hidden)'));
+        // Переключаем видимость карточки
+        cCard.classList.toggle("card-active");
+
+        // Сохраняем в переменную все открытые карточки
+        cards = document.getElementsByClassName('card-active');
+
+        // Если есть открытая карточка
+        if (cards.length) {
+            // Проверяем, нажат ли новый маркер
+            for (var i = 0; i < cards.length; i++) {
+                if ( cards[i].getAttribute('id') !== cCard.getAttribute('id') ) {
+                    // Если нажат, у всех остальных карточек убираем активный класс
+                    cards[i].classList.remove('card-active');
+                }
+            }
+
+            // Запускаем слайдер
+            initSlider(cCard.querySelector('.card:not(.hidden)'));
+        }
+    } else {
+        // если не удалось загрузить файлы настроек,
+        // показываем сообщение об ошибке
+        $('.loading-failed-message').fadeIn(500);
     }
 }
 
@@ -222,42 +296,10 @@ L.tileLayer('http://{s}.tile.osm.kosmosnimki.ru/kosmo/{z}/{x}/{y}.png', {
 
 }).addTo(map);
 
-var loaded_points = load_points();
-
-if(loaded_points.status == true ){
-
-    // load_points.data.points
-    // forEach метод работы с массивами, пробежка по каждому элементу
-    // function(point) выполняет действие с передачей load_points.data.points в переменную point
-    loaded_points.data.point.forEach(function(point){
-
-        // create_marker вызов ранее объявленой функции
-        // map первый аргумент функции, подставляем значение переменной map
-        // location.geo.latitude подставка значение переменной point > location> geo > latitude
-        // location.geo.longitude подставка значение переменной point > location> geo > longitude
-        create_marker(map, point.location.geo.latitude, point.location.geo.longitude);
-
-    });
-
-    // var объявляет переменную
-    // track название переменной
-    // points_array вызов ранее объявленной функции
-    // loaded_points подставка раннее объявленной переменной
-    var track = points_array(loaded_points);
-
-    // create_track вызов ранее объявленной функции
-    // map параметр функции, подставляется ранее объявленная переменная map
-    // track ранее обявленная переменная, подставляется в параметр latlngs
-    create_track(map, track);
-
-} else{
-    // вывод в консоль
-    //console.log('не удалось загрузить метки');
-}
-
 // При клике вне карточки закрываем ее
 map.on("click", function(){
     $(".card-active").removeClass("card-active");
+    $(".loading-failed-message").fadeOut(500);
 });
 
 // Сохраняем кнопки закрытия карточек в переменную

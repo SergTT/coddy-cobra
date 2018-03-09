@@ -10,171 +10,74 @@
     src: url('../fonts/NotoSans-Bold.ttf') format('truetype');
 }
 
-html{
-    /* Отображение элемента: Блок */
-    display: block;
-    /* Позиционирование элемента: Относительное */
-    position: relative;
-    /* Просчет размеров элемента: Игнорировать внутрение отступы */
-    box-sizing: border-box;
-    /* Обтекание элемента: По левому краю */
-    float: left;
-    
-    /* Внешний отступ элемента */
-    margin: 0px;
-    /* Внутренний отступ элемента */
-    padding: 0px;
-    
-    /* Ширина элемента */
-    width: 100%;
-    /* Высота элемента */
-    height: 100%;
-    
-    /* Полоса прокрутки: Скрыта */
-    overflow: hidden;
+body {
+    font-family: 'NotoSansRegular', sens-serif;
 }
 
-body{
-    /* Отображение элемента: Блок */
+html,
+body,
+.environment {
     display: block;
-    /* Позиционирование элемента: Относительное */
     position: relative;
-    /* Просчет размеров элемента: Игнорировать внутрение отступы */
     box-sizing: border-box;
-    /* Обтекание элемента: По левому краю */
     float: left;
-    
-    /* Внешний отступ элемента */
     margin: 0px;
-    /* Внутренний отступ элемента */
     padding: 0px;
-    
-    /* Ширина элемента */
     width: 100%;
-    /* Высота элемента */
     height: 100%;
-    
-    /* Полоса прокрутки: Скрыта */
     overflow: hidden;
-}
-
-.environment{
-    /* Отображение элемента: Блок */
-    display: block;
-    /* Позиционирование элемента: Относительное */
-    position: relative;
-    /* Просчет размеров элемента: Игнорировать внутренние отступы */
-    box-sizing: border-box;
-    /* Обтекание элемента: По левому краю */
-    float: left;
-    
-     /* Внешний отступ элемента */
-    margin: 0px;
-    /* Внутренний отступ элемента */
-    padding: 0px;
-    
-     /* Ширина элемента */
-    width: 100%;
-    /* Высота элемента */
-    height: 100%;
-    
-     /* Полоса прокрутки: Скрыта */
-    overflow: hidden;
-    
 }
 
 .environment.default{
-    /* Отображение элемента: Блок */
-    /* !important важное свойство */
     display: block !important;
 }
+
 .environment.sources{
-    /* Отображение элемента: Не отображать */
-    /* !important важное свойство */
      display: none !important;
 }
 
 .view{
-    /* Отображение элемента: Блок */
     display: block;
-    /* Позиционирование элемента: Абсолютное */
     position: absolute;
-    /* Просчет размеров элемента: Игнорировать внутрение отступы */
     box-sizing: border-box;
-    /* Обтекание элемента: По  левому краю */
     float: left;
-    
-    /* Внешний отступ элемента */
     margin: 0px;
-    /* Внутрений отступ элемента */
     padding: 0px;
-    
-    /* Ширина элемента */
     width: 100%;
-    /* Высота элемента */
     height: 100%;
-    
-    /* Полоса прокрутки: Скрыта */
     overflow: hidden;
-    
+
 }
 .view.default{
-    /* Отображение элемента: Блок */
-    /* !important важное свойство */
     display: block !important;
-    
-    /* Уровень слоя */
     z-index: 1;
 }
 .view.windows{
-    /* Отображение элемента: Не отображать */
-    /* !important важное свойство */
     display: none !important;
-    
-    /* Уровень слоя */
     z-index: 3;
-    
     background-color: rgba(0,0,0,0.8);
 }
 .view.windows.active{
-    /* Отображения элемента: Не отображать */
-    /* !important важное свойство */
     display: block !important;
 }
 .view.welcome{
-    /* Отображение элемента: Не отображать */
-    /* !important важное свойство */
     display: none !important;
-    
-    /* Уровень слоя */
     z-index: 2;
 }
 
 .inner{
-    /* Отображение элемента: Блок */
     display: block;
-    /* Позиционирование элемента: Абсолютное */
     position: absolute;
-    /* Просчет размеров элемента: Игнорировать внутрение отступы */
     box-sizing: border-box;
-    /* Обтекание элемента: По левому краю */
     float: left;
-    
-    /* Внешний отступ элемента */
     margin: 0px;
-    /* Внутрений отступ элемента */
     padding: 0px;
-    
-    
-    /* Ширина элемента */
     width: 100%;
-    /* Высота элемента */
     height: auto;
 }
+
 .section.map > .inner{
-      /* Высота элемента */
     height: 100%;
-    
 }
 
 .card-container {
@@ -189,15 +92,11 @@ body{
     background: white;
     border-radius: 5px;
     padding: 10px 20px;
-    font-family: 'NotoSansRegular';
     font-size: 16px;
     line-height: 1.4em;
 }
 
 /* Стили для карточек */
-.card {
-    
-}
 
 .card__logo {
     margin: 0 auto;
@@ -226,6 +125,10 @@ body{
     font-size: 20px;
 }
 
+.card__site {
+    margin-top: 24px;
+}
+
 .exitImg {
     opacity: 0.45;
     position: absolute;
@@ -239,111 +142,59 @@ body{
 }
 
 .view.windows .window{
-    
-    /* Отображение элемента: не отображать */
     display: none;
-    /* Позиционирование элемента: Абсолютное */
     position: absolute;
-    /* Просчет размеров элемента: Игнорировать внутрение отступы */
     box-sizing: border-box;
-    /* Обтекание элемента: По левому краю */
     float: left;
-    
-    /* Внешний отступ элемента */
     margin: 0px;
-    /* Внутрений отступ элемента */
     padding: 0px;
-    
-    
-    /* Ширина элемента */
     width: auto;
-    /* Высота элемента */
     height: 100%;
 }
+
 .view.windows .window.active{
-    /* Отображения элемента: Блок */
-    /* !important важное свойство */
     display: block !important;
 }
 
 .view.windows .window.city{
-    /* Позиционирование элемента: Абсолютное */
     position: absolute;
-    
-    /* Позиция элемента от верхнего края */
     top: 0px;
-    /* Позиция элемента от правого края */
     right: 0px;
-    
-    /* Ширина элемента */
     width: 300px;
-    /* Высота элемента */
     height: 100%;
-    
-    /* Цвет фона элемента */
     background-color: rgb(255,255,255);
-    /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
 }
+
 .view.windows .window.school{
-    /* Позиционирование элемента: абсолютное */
     position: absolute;
-    
-    /* Позиция элемента от верхнего края */
     top: 0px;
-    /* Позиция элемента от правого края */
     right: -300px;
-    
-    /* Ширина элемента */
     width: 300px;
-    /* Высота элемента */
     height: 100%;
-    
-    /* Цвет фона элемента */
     background-color: rgb(255,255,255);
-    /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
-    
-    /* Анимация изменения */
     transition: all 0.5s ease;
-    /* Анимация изменения для Webkit-браузеров: Chrome, Safari, Opera */
     -webkit-transition: all 0.5s ease;
-    /* Анимация изменения для Gecko-браузеров: Firefor и Edge */
     -moz-transition: all 0.5s ease;
-    /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
     -ms-transition: all 0.5s ease;
-    
 }
+
 .view.windows .window.school.active{
     right: 0px;
 }
 
 .view.windows .window.point{
-    /* Позиционирование элемента: абсолютное */
     position: absolute;
-    
-    /* Позиция элемента от верхнего края */
     top: 0px;
-    /* Позиция элемента от правого края */
     right: -300px;
-    
-    /* Ширина элемента */
     width: 300px;
-    /* Высота элемента */
     height: 100%;
-    
-    /* Цвет фона элемента */
     background-color: rgb(255,255,255);
-    /* Тень элемента */
     box-shadow: 0px 0px 20px rgba(0,0,0,0.75);
-    
-    /* Анимация изменения */
     transition: all 0.5s ease;
-    /* Анимация изменения для Webkit-браузеров: Chrome, Safari, Opera */
     -webkit-transition: all 0.5s ease;
-    /* Анимация изменения для Gecko-браузеров: firefox и подобных */
     -moz-transition: all 0.5s ease;
-    /* Анимация изменения для IE-браузеров: Internet Explorer и Edge */
     -ms-transition: all 0.5s ease;
 }
 
@@ -390,7 +241,7 @@ body{
     padding-left: 60px;
     height: 50px;
     line-height: 50px;
-                
+
 }
 
 .tabs {
@@ -423,4 +274,22 @@ body{
 
 .hidden{
     display: none;
+}
+
+.loading-failed-message {
+    position: absolute;
+    width: 400px;
+    max-height: 200px;
+    z-index: 20;
+    padding: 20px;
+    border: 3px solid rgb(200,150,150);
+    border-radius: 15px;
+    background-color: #fff;
+    font-size: 26px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
 }
