@@ -1,7 +1,6 @@
 [
     {
         "id": "actis-glowbite",
-        "tab": true,
         "tabs": [
             {
                 "tabId": "actis-tab",
@@ -62,7 +61,6 @@
     },
     {
         "id": "ibs",
-        "tab": false,
         "cards": [
             {
                 "logo": "Logo__ibs.jpg",
@@ -87,7 +85,6 @@
     },
     {
         "id": "deloitte",
-        "tab": false,
         "cards": [
             {
                 "logo": "Logo__deloitte.jpg",
@@ -112,7 +109,6 @@
     },
     {
         "id": "krock",
-        "tab": false,
         "cards": [
             {
                 "logo": "Logo__crock.png",
@@ -133,7 +129,6 @@
     },
     {
         "id": "finam",
-        "tab": false,
         "cards": [
             {
                 "logo": "logo__Finam.jpg",
@@ -161,7 +156,6 @@
     },
     {
         "id": "MosArt",
-        "tab": false,
         "cards": [
             {
                 "logo": "MosArt-Logo.jpg",
@@ -186,7 +180,6 @@
     },
     {
         "id": "nexTouch",
-        "tab": false,
         "cards": [
             {
                 "logo": "Logo__nexTouch.png",
