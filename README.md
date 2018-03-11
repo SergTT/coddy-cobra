@@ -29,18 +29,34 @@
 
 3. Перед закрывающим тегом `</body>` подключите внешнюю библиотеку jQuery и Leaflet. Ниже подключите само приложение (скрипты functions.map.js и init.map.js).
 
+	```
 	<script type="text/javascript" src="js/library/jquery/jquery.3.1.1.js"></script>
+	```
+
+	```
 	<script type="text/javascript" src="js/library/lealfet/leaflet.1.0.3.js"></script>
+	```
+
+	```
 	<link rel="stylesheet" type="text/css" href="js/library/lealfet/leaflet.1.0.3.css">
+	```
+
+	```
 	<script type="text/javascript" src="js/functions.map.js"></script>
+	```
+
+	```
 	<script type="text/javascript" src="js/init.map.js"></script>
+	```
 
 4. Добавьте на страницу контейнер карты.
 
+	```
 	<div class="section map">
 		<div class="inner" id="map">
 		</div>
 	</div>
+	```
 
 ### Как менять/задавать информацию о филиалах ###
 
