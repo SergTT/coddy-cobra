@@ -19,8 +19,8 @@
 2. Внутри тега `<head>` подключите стили.
 
 	```
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/ui/layout/section.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/ui/layout/section.css">
 	```
 
 
