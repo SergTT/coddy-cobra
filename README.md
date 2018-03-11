@@ -20,9 +20,6 @@
 
 	```
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    ```
-
-    ```
     <link rel="stylesheet" type="text/css" href="css/ui/layout/section.css">
 	```
 
@@ -31,21 +28,9 @@
 
 	```
 	<script type="text/javascript" src="js/library/jquery/jquery.3.1.1.js"></script>
-	```
-
-	```
 	<script type="text/javascript" src="js/library/lealfet/leaflet.1.0.3.js"></script>
-	```
-
-	```
 	<link rel="stylesheet" type="text/css" href="js/library/lealfet/leaflet.1.0.3.css">
-	```
-
-	```
 	<script type="text/javascript" src="js/functions.map.js"></script>
-	```
-
-	```
 	<script type="text/javascript" src="js/init.map.js"></script>
 	```
 
