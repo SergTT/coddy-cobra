@@ -20,8 +20,9 @@
 
 	```
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 	<link rel="stylesheet" type="text/css" href="css/ui/layout/section.css">
-	<```
+	```
 
 
 3. Перед закрывающим тегом `</body>` подключите внешнюю библиотеку jQuery и Leaflet. Ниже подключите само приложение (скрипты functions.map.js и init.map.js).
