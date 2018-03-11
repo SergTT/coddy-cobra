@@ -30,13 +30,12 @@
 	<script type="text/javascript" src="js/functions.map.js"></script>
 	<script type="text/javascript" src="js/init.map.js"></script>
 
-
 4. Добавьте на страницу контейнер карты.
 
-    <div class="section map">
-        <div class="inner" id="map">
-        </div>
-    </div>
+	<div class="section map">
+		<div class="inner" id="map">
+		</div>
+	</div>
 
 ### Как менять/задавать информацию о филиалах ###
 
