@@ -14,6 +14,8 @@
                 "name": "GlowByte"
             }
         ],
+        "latitude": 55.759458,
+        "longitude": 37.665983,
         "cards": [
             {
                 "cardId": "actis",
@@ -61,6 +63,8 @@
     },
     {
         "id": "ibs",
+        "latitude": 55.8063202,
+        "longitude": 37.5914289,
         "cards": [
             {
                 "logo": "Logo__ibs.jpg",
@@ -85,6 +89,8 @@
     },
     {
         "id": "deloitte",
+        "latitude": 55.778299,
+        "longitude": 37.5870413,
         "cards": [
             {
                 "logo": "Logo__deloitte.jpg",
@@ -109,6 +115,8 @@
     },
     {
         "id": "krock",
+        "latitude": 55.753781,
+        "longitude": 37.6815132,
         "cards": [
             {
                 "logo": "Logo__crock.png",
@@ -129,6 +137,8 @@
     },
     {
         "id": "finam",
+        "latitude": 55.767828,
+        "longitude": 37.6041913,
         "cards": [
             {
                 "logo": "logo__Finam.jpg",
@@ -156,6 +166,8 @@
     },
     {
         "id": "MosArt",
+        "latitude": 55.758737,
+        "longitude": 37.820825,
         "cards": [
             {
                 "logo": "MosArt-Logo.jpg",
@@ -180,6 +192,8 @@
     },
     {
         "id": "nexTouch",
+        "latitude": 55.707740,
+        "longitude": 37.724175,
         "cards": [
             {
                 "logo": "Logo__nexTouch.png",

@@ -69,5 +69,3 @@ function load_points(){
     return function_result;
 
 }
-
-//console.log(typeof (load_points().data));

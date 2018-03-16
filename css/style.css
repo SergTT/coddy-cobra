@@ -278,18 +278,18 @@ body,
 
 .loading-failed-message {
     position: absolute;
-    width: 400px;
+    width: 75%;
     max-height: 200px;
-    z-index: 20;
+    z-index: 500;
     padding: 20px;
     border: 3px solid rgb(200,150,150);
     border-radius: 15px;
     background-color: #fff;
-    font-size: 26px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    font-size: 22px;
+    top: 5%;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
     margin: auto;
     text-align: center;
 }

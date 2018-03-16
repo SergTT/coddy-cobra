@@ -1,3 +1,55 @@
+// L вызов библиотеки Leaflet
+// map метод выбора элемента для помещения в него карты
+var map = L.map('map',{
+
+    // zoomControl дополнительный параметр метода map, настраивающий отображение панели управления маштабом
+    // false - скрыть
+    // true - показать
+    zoomControl: false,
+
+    // attributionControl дополнительный параметр метода map, настраивающий отображение данных о аттрибуции
+    // false - скрыть
+    // true - показать
+    attributionControl: false
+});
+
+L.control.zoom({
+     position:'topright'
+}).addTo(map);
+
+// setView метод, который устанавливает представление карты по координатам
+// [55.7540, 37.6203] - первый аргумент метода, координаты на карте
+// 12 - второй аргумент функции, масштаб карты
+map.setView([55.7540, 37.6203], 12);
+
+var marker = L.icon({
+    iconUrl: 'img/marker.png',
+    shadowUrl: 'img/marker-shadow.png',
+    iconSize: [33, 40],
+    shadowSize: [42, 36],
+    shadowAnchor: [12, 16]
+});
+
+var cardOpened = false,
+    currentCard,
+    sliderImages,
+    cards,
+    numImage,
+    leftButton,
+    rightButton,
+    thisTabCard,
+    tabs;
+
+var addMarkers = function(cardObj){
+
+L.marker([cardObj.latitude, cardObj.longitude], {icon: marker}).addTo(map)
+    .on("click", function(){
+        currentCard = document.querySelector("#" + cardObj.id);
+        // При клике на маркер запускаем обработку видимости карточек
+        resetCards(currentCard);
+    });
+}
+
 // Функция отвечает за получение данных филиалов и формирование HTML-разметки для них
 function setCardData(cardObj) {
 
@@ -60,53 +112,15 @@ var coddyData = load_points();
 
 if(coddyData.status == true ){
     // Из данных филиалов получаем HTML-разметку
+    coddyData.data.forEach(addMarkers);
     coddyData.data.forEach(setCardData);
 } else{
-    var $loadingFailedMessage = $('body').append('<div class="loading-failed-message hidden">Не удалось загрузить информацию о филиалах. <br /> Убедитесь, что файл настроек доступен и содержит корректную информацию. </div>');
-    console.log('не удалось загрузить метки');
+    var $loadingFailedMessage = $('.map').append('<div class="loading-failed-message hidden">Не удалось загрузить информацию о филиалах. <br /> Убедитесь, что файл настроек доступен и содержит корректную информацию. </div>');
+    console.log('!Не удалось загрузить метки. Убедитесь, что файл настроек доступен и содержит корректную информацию!');
+    // если не удалось загрузить файлы настроек,
+    // показываем сообщение об ошибке
+    $('.loading-failed-message').fadeIn(500);
 }
-
-// L вызов библиотеки Leaflet
-// map метод выбора элемента для помещения в него карты
-var map = L.map('map',{
-
-    // zoomControl дополнительный параметр метода map, настраивающий отображение панели управления маштабом
-    // false - скрыть
-    // true - показать
-    zoomControl: false,
-
-    // attributionControl дополнительный параметр метода map, настраивающий отображение данных о аттрибуции
-    // false - скрыть
-    // true - показать
-    attributionControl: false
-});
-
-L.control.zoom({
-     position:'topright'
-}).addTo(map);
-
-// setView метод, который устанавливает представление карты по координатам
-// [55.7540, 37.6203] - первый аргумент метода, координаты на карте
-// 12 - второй аргумент функции, масштаб карты
-map.setView([55.7540, 37.6203], 12);
-
-var marker = L.icon({
-    iconUrl: 'img/marker.png',
-    shadowUrl: 'img/marker-shadow.png',
-    iconSize: [33, 40],
-    shadowSize: [42, 36],
-    shadowAnchor: [12, 16]
-});
-
-var cardOpened = false,
-    currentCard,
-    sliderImages,
-    cards,
-    numImage,
-    leftButton,
-    rightButton,
-    thisTabCard,
-    tabs;
 
 // Обрабатываем событие нажатой табы
 var tabPressed = function(evt) {
@@ -230,54 +244,6 @@ var initSlider = function(cardSlider) {
     rightButton.addEventListener("click", rightButtonPressed, false);
 
 }
-
-L.marker([55.759458, 37.665983], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#actis-glowbite");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
-
-L.marker([55.8063202, 37.5914289], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#ibs");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
-
-L.marker([55.778299, 37.5870413], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#deloitte");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
-
-L.marker([55.753781, 37.6815132], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#krock");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
-
-L.marker([55.767828, 37.6041913], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#finam");
-
-        resetCards(currentCard);
-        //cardOpened = !cardOpened;
-    });
-L.marker([55.707740, 37.724175], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#nexTouch");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
-L.marker([55.758737, 37.820825], {icon: marker}).addTo(map)
-    .on("click", function(){
-        currentCard = document.querySelector("#MosArt");
-        // При клике на маркер запускаем обработку видимости карточек
-        resetCards(currentCard);
-    });
 
 // L вызывает библеотеку Leaflet
 // метод tileLayer назначает карте нужный слой с элемента карты(тайлами)
